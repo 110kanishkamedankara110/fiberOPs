@@ -1,0 +1,124 @@
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+}
+.border-none{
+    border: none !important;
+}
+.object-fit-contain{
+    object-fit: contain !important;
+}
+.search input {
+    height: 39px;
+    text-indent: 5px;
+    border: 2px solid #d6d4d4;
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid #f57224;
+}
+/* 
+.search .fa-search {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+} */
+
+.search button {
+    outline: none;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 0.4rem 1rem;
+    position: absolute !important;
+    top: 0px;
+    right: 0px;
+    height: inherit;
+    background: white;
+}
+.search button:hover{
+    background-color: #f5f5f5;
+}
+
+/*ITEM*/
+.item-img-container{
+   aspect-ratio: 1/1;
+   background-color: #f5f5f5;
+}
+
+/*NEW BADGE*/
+.new-badge{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+/*FAV ICON*/
+.fav-icon{
+    position: absolute;
+    background-color: white;
+    top: 5px;
+    right: 5px;
+    width: 35px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f57224;
+}
+
+.fav-icon:hover{
+    background-color: #f57224;
+    color: white;
+}
+.fav-icon:hover > i{
+    background-color: #f57224;
+    color: white;
+}
+.fav-icon i{
+    color:#f57224;
+}
+.col-48{
+   flex-basis: 46%;
+}
+@media screen and (min-width: 764px) {
+    .col-48{
+        flex-basis: 30%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .col-48{
+        flex-basis: 18%;
+    }
+}
+.btn-outlined{
+    font-size: 12px;
+    color: gray;
+    background-color: white;
+    padding: 4px 7px;
+    border: 1px solid gray !important;
+}
+
+.h-line{
+    height: 3px;
+    background-color:#f57224;
+}
+/*ITEM END*/
+
+/*CARESOUL*/
+/* .carousel-item {
+    height: 30vh;
+  } */
+
+  /* Override the height to 50% on medium screens and larger */
+  /* @media (min-width: 768px) {
+.carousel-item  {
+      height: 70vh;
+    }
+  } */
+
+  @media (min-width: 768px) {
+    .w-md-50 {
+      width: 50% !important;
+    }
+  }
