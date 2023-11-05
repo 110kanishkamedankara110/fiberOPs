@@ -122,7 +122,7 @@ require "database.php";
 
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-lg-6 col-12 mb-3">
+                                    <div class="d-none col-lg-6 col-12 mb-3">
                                         <select id="con" class="form-select">
                                             <option value="0">Select Condition</option>
                                             <?php
@@ -138,7 +138,7 @@ require "database.php";
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-lg-6 col-12 mb-3">
+                                    <div class="d-none col-lg-6 col-12 mb-3">
                                         <select id="colo" class="form-select">
                                             <option value="0">Select color</option>
                                             <?php

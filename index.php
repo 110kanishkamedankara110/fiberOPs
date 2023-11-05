@@ -36,9 +36,9 @@
             <div class="col-12 p-5">
                 <div class="row" style="transition: 0.5s;">
                     <!-- left -->
-                    <div class="col-6 background1 d-none d-lg-block order-2" onclick="window.location='adminsignin.php';">
+                    <!-- <div class="col-6 background1 d-none d-lg-block order-2" onclick="window.location='adminsignin.php';">
 
-                    </div>
+                    </div> -->
                     <!-- end left -->
                     <!-- right -->
                     <!-- <div class="col-12 col-lg-6 text-white order-3" id="signin-box">
@@ -91,7 +91,7 @@
                         </div>
                     </div> -->
 
-                    <div class=" col-12 col-lg-6 text-dark bg-white rounded rounded-lg order-3 py-5 shadow shadow-sm" id="signin-box">
+                    <div  class=" col-12 col-lg-6  text-dark bg-white rounded rounded-lg order-3 py-5 shadow shadow-sm" id="signin-box">
                         <div class="col-12 text-center mb-2" onclick="window.location='adminsignin.php';">
                             <img src="recourses/logo.png" class="w-50 w-md-25 mx-auto">
                         </div>
@@ -182,7 +182,7 @@
                                 </div>
                             </div>
                         </div> -->
-                    <div class=" mt-5 col-12 col-lg-6 d-none py-4 text-dark order-1 bg-white rounded rounded-lg shadow shadow-sm" id="signup-box">
+                    <div class=" mt-5 col-12 col-lg-6  d-none py-4 text-dark order-1 bg-white rounded rounded-lg shadow shadow-sm" id="signup-box">
                         <div class="col-12 text-center mb-2" onclick="window.location='adminsignin.php';">
                             <img src="recourses/logo.png" class="w-50 w-md-25 mx-auto">
                         </div>

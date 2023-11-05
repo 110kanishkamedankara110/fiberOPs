@@ -139,9 +139,9 @@ if (isset($_GET["id"])) {
                                                         ?>
                                                         <b>Seller Mail : </b><?= $em ?>
                                                     </label>
-                                                    <a class="mt-2 btn btn-secondary" href="massage.php?to=<?= $em ?>">
+                                                    <!-- <a class="mt-2 btn btn-secondary" href="">
                                                         Contact Seller
-                                                    </a>
+                                                    </a> -->
                                                     <hr />
                                                 </div>
                                                 <div class="col-12">

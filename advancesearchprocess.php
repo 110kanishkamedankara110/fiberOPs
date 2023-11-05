@@ -79,7 +79,7 @@ if ($_POST["k"] != "") {
     } 
     if ($brand != "0") {
         $keyword = "%" . $key . "%";
-        $pronum =  database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND `Model_has_brand_id1` IN (SELECT `id` FROM `model_has_brand` WHERE `brand_id`='" . $brand . "' )");
+        $pronum =  database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND  `brand_id`='" . $brand . "'");
         $n = $pronum->num_rows;
         $results_per_page = 1;
         $pages = ceil($n / $results_per_page);
@@ -91,11 +91,11 @@ if ($_POST["k"] != "") {
         }
 
         $page_first_result = ($pageno * $results_per_page) - $results_per_page;
-        $productrs = database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND `Model_has_brand_id1` IN (SELECT `id` FROM `model_has_brand` WHERE `brand_id`='" . $brand . "' ) LIMIT " . $results_per_page . " OFFSET " . $page_first_result . "  ; ");
+        $productrs = database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND `brand_id`='" . $brand . "' LIMIT " . $results_per_page . " OFFSET " . $page_first_result . "  ; ");
     } 
     if ($model != 0) {
         $keyword = "%" . $key . "%";
-        $pronum =  database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND `Model_has_brand_id1` IN (SELECT `id` FROM `model_has_brand` WHERE `model_id`='" . $model . "')");
+        $pronum =  database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND `model_id`='" . $model . "'");
         $n = $pronum->num_rows;
         $results_per_page = 1;
         $pages = ceil($n / $results_per_page);
@@ -107,7 +107,7 @@ if ($_POST["k"] != "") {
         }
 
         $page_first_result = ($pageno * $results_per_page) - $results_per_page;
-        $productrs = database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND `Model_has_brand_id1` IN (SELECT `id` FROM `model_has_brand` WHERE `model_id`='" . $model . "') LIMIT " . $results_per_page . " OFFSET " . $page_first_result . "  ; ");
+        $productrs = database::s("SELECT * FROM `product` WHERE `description` LIKE '" . $keyword . "' AND  `model_id`='" . $model . "' LIMIT " . $results_per_page . " OFFSET " . $page_first_result . "  ; ");
     }
     if ($condition != 0) {
         $keyword = "%" . $key . "%";

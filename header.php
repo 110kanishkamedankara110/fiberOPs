@@ -1,4 +1,4 @@
-<div style="background-color: red;" class="col-12">
+<div  class="col-12">
     <div style="background-color: green;" class="row bg-dark text-white">
         <div style="background-color: blue;" class="col-12 col-lg-5 align-self-start offset-lg-1 p-2">
             <span><a href="home.php" class="text-decoration-none text-white text-start label1"><?php
@@ -29,7 +29,7 @@
 
         if (isset($_SESSION["user"])) {
         ?>
-            <div style="background-color: grey;" class="col-12 offset-lg-3 col-lg-3">
+            <div class="col-12 offset-lg-3 col-lg-3">
                 <div class="row mt-1  mb-1">
                     <!-- <div class="col-1 col-lg-3 mt-1">
                         <span class="text-start label2" onclick="gotoaddproduct();">Sell</span>
@@ -42,7 +42,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="watchlist.php">Watchlist</a></li>
                                 <li><a class="dropdown-item" href="tranceactionhistory.php">Purchase History</a></li>
-                                <li><a class="dropdown-item" href="massage.php">Massage</a></li>
+                                <!-- <li><a class="dropdown-item" href="massage.php">Message</a></li> -->
                                 
                                 <!-- <li><a class="dropdown-item" href="sellerproductview.php">My Products</a></li> -->
                                 <li><a class="dropdown-item" href="userprofile.php">My Profile</a></li>
