@@ -57,9 +57,9 @@ if (isset($_SESSION["user"])) {
         ?>
         
 
-        <div class="col-12 m-0 p-10 p-md-0">
+        <div class="w-100 m-0 p-10 p-md-0">
 
-            <div class="row bg-white">
+            <div class="row bg-white align-items-center">
                 <div class="col-lg-1 ml-0 col-12 logologo offset-lg-1 mb-4 mb-lg-0">
                     <img src="recourses/logo.png" class="w-100 h-100 object-fit-contain" alt="logo">
                 </div>

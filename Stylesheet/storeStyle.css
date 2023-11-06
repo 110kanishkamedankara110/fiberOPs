@@ -786,14 +786,12 @@ p {
 
 
 .row {
-    display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: space-around;
 }
 
 .col-2 {
-    min-width: 300px;
+   /* min-width: 300px;*/
 }
 
 .col-2 img {

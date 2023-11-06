@@ -5,7 +5,7 @@
     <title>FIBEROPTICSLK | SignIn</title>
 
     <link rel="icon" href="recourses/logo.svg" />
-    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="./bootstrap.css" />
     <link rel="stylesheet" href="style.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,7 @@
                         </div>
                         <div class="row px-1 px-md-4">
                             <h5 class="fw-bold mb-0 text-center">Sign in</h5>
-
+                            <p class="mass" id="mass2"></p>
                             <div class="col-12 mb-1">
                                 <lable class="form-form-label">Email</lable>
                                 <input type="email" class="form-control" id="email2" value="<?= $email ?>">

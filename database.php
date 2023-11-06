@@ -10,6 +10,7 @@ class database
     public static function db(){
         if (!isset($dbms)) {
             database::$dbms = new mysqli("localhost", "root","0724886404Was", "eshop", "3306");
+            
         }
     }
 
