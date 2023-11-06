@@ -32,10 +32,12 @@ if (isset($_GET["id"])) {
     <head>
         <title>FIBEROPTICSLK Productview</title>
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="bootstrap.css" />
+        <!-- <link rel="stylesheet" href="bootstrap.css" /> -->
         <link rel="icon" href="recourses\logo.svg" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" /> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
 
@@ -48,41 +50,46 @@ if (isset($_GET["id"])) {
         <?php
         require "loading.php";
         ?>
-        <div class="container-fluid">
-            <div class="row">
-                <?php
-                require "header.php";
+        <div class="container-fluid w-100 ">
+            <?php
+            require "header.php";
+            ?>
+            <div class="w-100">
 
+                <div class="w-100 mt-0 singleproduct">
+                    <div class="col-12">
+                        <nav>
+                            <ol class=" d-flex flex-wrap mb-1 list-unstyled bg-white rounded">
+                                <li class="breadcrumb-item ">
+                                    <a href="home.php" class="text-secondary"> Home </a>
+                                </li>
 
-                ?>
-                <div class="col-12 mt-0 singleproduct">
-                    <div class="row">
-                        <div class="bg-white" style="padding:11px">
-                            <div class="row">
+                                <li class="breadcrumb-item active">
+                                    <a class="text-decoration-none text-black-50" href="#"> Single View</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                            <div class="row align-items-start py-2">
                                 <div class="col-lg-2 order-lg-1 order-2">
-                                    <ul>
+                                    <div class="d-flex flex-column justify-content-center align-items-center">
                                         <?php
                                         $im = database::s("SELECT * FROM `images` WHERE `product_id`='" . $id . "'; ");
                                         $nr = $im->num_rows;
                                         for ($i = 0; $i < $nr; $i++) {
                                             $img = $im->fetch_assoc();
                                         ?>
-                                            <li class="d-flex flex-column justify-content-center align-items-center border border-1 border-secondary">
-                                                <div class="col-12 mt-1 mb-1 imim" style="background-image: url('<?php echo $img["code"] ?>');" onclick="bm('<?php echo $img['code'] ?>');"></div>
-                                            </li>
+                                           
+                                                <div class="col-12 mt-1 mb-1 imim bg-f5f5f5" style="background-image: url('<?php echo $img["code"] ?>');" onclick="bm('<?php echo $img['code'] ?>');"></div>
+                                          
                                         <?php
                                         }
 
                                         ?>
-
-
-
-
-
-                                    </ul>
+                                    </div>
                                 </div>
                                 <div class="col-lg-5 order-2 order-lg-1 d-none d-lg-block">
-                                    <div class="d-flex flex-column align-items-center  border border-1 border-secondary p-3">
+                                    <div class="d-flex flex-column align-items-center  bg-f5f5f5 p-3">
                                         <div id="bm" class="col-12 mt-1 mb-1 imimim" style="background-image: url('<?php echo $img["code"] ?>');"></div>
                                     </div>
                                 </div>
@@ -91,48 +98,33 @@ if (isset($_GET["id"])) {
                                         <div class="col-12">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <nav>
-                                                        <ol class=" d-flex flex-wrap mb-0 list-unstyled bg-white rounded">
-                                                            <li class="breadcrumb-item ">
-                                                                <a href="home.php">Home</a>
-                                                            </li>
-
-                                                            <li class="breadcrumb-item active">
-                                                                <a class="text-decoration-none text-black-50" href="#">Single View</a>
-                                                            </li>
-                                                        </ol>
-                                                    </nav>
+                                                    <label class="form-label fs-4 fw-bold mt-0 mb-0"><?php echo $prodet["title"] ?></label>
                                                 </div>
-
-                                                <div class="col-12">
-                                                    <label class="form-label fs-4 fw-bold mt-0"><?php echo $prodet["title"] ?></label>
-
-                                                </div>
-                                                <div class="col-12 mt-1 fs-5 ">
+                                                <!-- <div class="col-12 mt-0 fs-5 ">
                                                     <span class="badge badge-sucess">
-                                                        <!-- <i class="bi bi-star-fill text-warning"></i>&nbsp;<label class="text-black-50"> 4.5 Stars </label>&nbsp;
-                                                        <label class="text-black-50">35 Ratings And 45 Reviews</label> -->
+                                                        <i class="bi bi-star-fill text-warning"></i>&nbsp;<label class="text-black-50"> 4.5 Stars </label>&nbsp;
+                                                        <label class="text-black-50">35 Ratings And 45 Reviews</label>
                                                     </span>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-12">
                                                     <label class=" fw-bold mt-1 fs-5  text-danger ">Rs. <?php echo $prodet["price"] ?></label>&nbsp;&nbsp;
                                                     <!-- <label class=" fw-bold mt-1 fs-4  ">Rs. <?php echo $prodet["price"] - (($prodet["price"] / 100) * 5) ?></label> -->
                                                 </div>
 
-                                                <hr class="hr1" />
+                                                <hr  />
                                                 <div class="col-12">
-                                                    <label class="text-primary fs-6 ">
+                                                    <label class="text-black fs-6 ">
                                                         <b>Warrenty : </b>6 months warrenty
                                                     </label><br />
-                                                    <label class="text-primary fs-6 ">
+                                                    <label class="text-black fs-6 ">
                                                         <b>Return Policy : </b>1 months Return
                                                     </label><br />
-                                                    <label class="text-primary fs-6 ">
+                                                    <label class="text-dark fs-6 ">
                                                         <b>In Stock : </b><?php echo $prodet["qty"] ?> Items left
                                                     </label><br />
                                                     <hr />
 
-                                                    <label class="text-black-50 fs-6 mb-3">
+                                                    <label class="text-black-50 fs-6 mb-0">
                                                         <?php
                                                         $res = database::s("SELECT * FROM `admin`");
                                                         $em = ($res->fetch_assoc())["email"];
@@ -142,10 +134,9 @@ if (isset($_GET["id"])) {
                                                     <!-- <a class="mt-2 btn btn-secondary" href="">
                                                         Contact Seller
                                                     </a> -->
-                                                    <hr />
                                                 </div>
-                                                <div class="col-12">
-                                                    <div class="row">
+                                                <!-- <div class="col-12">
+                                                    <div class="row"> -->
                                                         <!-- <div class="rounded border border-1 border-warning mt-1">
                                                             <div class="row">
                                                                 <div class="col-md-2 col-sm-2">
@@ -159,10 +150,10 @@ if (isset($_GET["id"])) {
                                                                 </div>
                                                             </div>
                                                         </div> -->
-
+<!-- 
                                                     </div>
-                                                </div>
-                                                <div class="col-12 mb-3">
+                                                </div> -->
+                                                <!-- <div class="col-12 mb-3"> -->
                                                     <!-- <div class="row" style="margin-top:15px">
                                                         <div class="col-md-6" style="margin-top: 15px;">
                                                             <label class="fs-6 mt-1 fw-bold ">Color Options</label><br />
@@ -171,16 +162,15 @@ if (isset($_GET["id"])) {
                                                             <button class="btn btn-primary">Blue</button>
                                                         </div>
                                                     </div> -->
-                                                </div>
-                                                <hr class="hr1" />
+                                                <!-- </div> -->
+                                                <hr/>
 
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div class="col-md-7" style="margin-top:15px">
-                                                            <div class="row">
-                                                                <div class="position-relative productqty overflow-hidden float-start rounded border border-1 border-secondary">
-                                                                    <span class="mt-2">Qty : </span>
-                                                                    <input disabled style="outline: none;;" class=" border-0  fs-6 fw-bold" type="text" value="1" id="qty<?php echo $id ?>" />
+                                                        <div class="col-md-3">
+                                                                <div class="position-relative d-flex align-items-center productqty overflow-hidden float-start rounded border border-1 border-secondary">
+                                                                    <span class=" mb-0 small">Qty: </span>
+                                                                    <input disabled style="outline: none;" class="w-100 border-0  fs-6 fw-bold" type="text" value="1" id="qty<?php echo $id ?>" />
                                                                     <div class="position-absolute qty-buttons">
                                                                         <div class=" border border-1 border-secondary d-flex flex-column align-items-center qty-inc" onclick="up(<?php echo $prodet['qty'] ?>,<?php echo $id ?>);">
                                                                             <i class="bi bi-chevron-compact-up"></i>
@@ -191,18 +181,17 @@ if (isset($_GET["id"])) {
                                                                     </div>
 
                                                                 </div>
-                                                            </div>
                                                         </div>
 
-                                                        <div class="col-12 col-lg-12">
-                                                            <div class="row">
+                                                        <div class="col-12 col-lg-8">
+                                                            <div class="row align-items-center">
 
                                                                 <?php
                                                                 if (isset($_SESSION["user"])) {
                                                                 ?>
-                                                                    <div class="col-5 col-lg-4 d-grid">
-                                                                        <button class="btn btn-primary mb-1 d-block" onclick="addtocart(<?php echo $id ?>,<?php echo $prodet['qty'] ?>)">Add to cart</button>
-                                                                    </div>
+                                                        
+                                                                        <button class="col-5 col-lg-4 btn btn-primary mb-0 d-block" onclick="addtocart(<?php echo $id ?>,<?php echo $prodet['qty'] ?>)">Add to cart</button>
+                                                              
 
 
 
@@ -214,22 +203,22 @@ if (isset($_GET["id"])) {
                                                                 <?php
 
                                                                 if ($prodet["qty"] == 0) {
-                                                                    ?>
-                                                                    <div class="col-5 col-lg-4 d-grid">
-                                                                        <button disabled class="btn btn-success d-block"   type="submit">Out Of Stock</button>
+                                                                ?>
+                                                                    <div class="col-5 col-lg-4">
+                                                                        <button disabled class="btn btn-success d-block" type="submit">Out Of Stock</button>
                                                                     </div>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <div class="col-5 col-lg-4 d-grid">
-                                                                        <button class="btn btn-success d-block" id="payhere-payment" onclick="paynow(<?php echo $id ?>)" type="submit">Buy now</button>
-                                                                    </div>
+
+                                                                        <button class="col-5 col-lg-4 btn btn-success d-block mb-0" id="payhere-payment" onclick="paynow(<?php echo $id ?>)" type="submit">Buy now</button>
+                                                           
                                                                 <?php
                                                                 }
 
                                                                 ?>
 
-                                                                <div class="col-2 col-lg-4 d-grid">
+                                                                <div class="col-2 col-lg-2 text-center">
                                                                     <?php
                                                                     if ($prodet["qty"] == 0) {
                                                                     } else {
@@ -273,8 +262,6 @@ if (isset($_GET["id"])) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -476,7 +463,7 @@ if (isset($_GET["id"])) {
                     }
         ?>
         <?php
-        require "footer.php";
+        // require "footer.php";
         ?>
         </div>
 
