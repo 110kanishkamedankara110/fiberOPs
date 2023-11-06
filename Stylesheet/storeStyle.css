@@ -1001,7 +1001,7 @@ h4 {
 
     /*NEWLY ADDED CAN REMOVE*/
     .row {
-        overflow-x: scroll;
+    
         flex-wrap: nowrap;
         justify-content: unset;
     }
