@@ -30,7 +30,7 @@ body {
     background-color: #f57224;
 }
 .bg-f5f5f5{
-    background-color: #f5f5f5;
+    background-color: #ececec;
 }
 
 .image {
@@ -231,17 +231,13 @@ body {
 .singleproduct {
     padding-top: 65px;
     padding-bottom: 145px;
-    background-color: #e5e5e5;
     padding: 20px;
 }
 
 .productqty {
-    width: 105px;
+    max-width: 105px;
     height: 50px;
     padding-left: 8px;
-    padding-bottom: 15px;
-    margin-right: 22px;
-    margin-bottom: 11px;
 }
 
 .qty-buttons {
@@ -1000,11 +996,6 @@ h4 {
     }
 
     /*NEWLY ADDED CAN REMOVE*/
-    .row {
-    
-        flex-wrap: nowrap;
-        justify-content: unset;
-    }
 }
 
 

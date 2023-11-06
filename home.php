@@ -202,9 +202,9 @@ INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE  `sta
                     }
                 ?>
 
-                    <div onclick="window.location='singleproductview.php?id=<?php echo $pro['id']; ?>'" class="col-48 p-0 border-none  card shadow shadow-sm rounded  mt-1 mb-1 ms-1">
-                        <div class="item-img-container rounded">
-                            <img src="<?php echo $imgpath["code"]; ?>" style="width:100%;height: 100%;background-position: center;background-repeat: no-repeat;background-size: contain;">
+                    <div onclick="window.location='singleproductview.php?id=<?php echo $pro['id']; ?>'" class="col-48 item-box p-0 border-none  card shadow shadow-sm rounded  mt-1 mb-1 ms-1">
+                        <div class="item-img-container rounded overflow-hidden">
+                            <img src="<?php echo $imgpath["code"]; ?>" class="w-100 h-100 object-fit-contain">
                         </div>
 
                         <div class="card-body px-1">
@@ -221,7 +221,7 @@ INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE  `sta
                             }
                             ?>
                             <span class="card-text text-secondary text-sm"><?php echo $pro["title"] ?></span><br />
-                            <span class="card-text text-orange text-sm"><?php echo $pro["price"] ?> </span><br />
+                            <span class="card-text text-orange text-sm">Rs. <?php echo $pro["price"] ?> </span><br />
                             <?php
                             if ($pro["qty"] > 0) {
                                 $h = "heart" . $pro["id"]
@@ -295,12 +295,13 @@ INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE  `sta
                 </div>
             </div>
         </div>
-        <!--footer-->
-        <?php
+        
+    </div>
+    <!--footer-->
+    <?php
         require "footer.php"
         ?>
         <!--footer-->
-    </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
