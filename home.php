@@ -22,7 +22,7 @@ if (isset($_SESSION["user"])) {
 
     <link rel="stylesheet" href="stylesheet/storeStyle.css" />
     <link rel="stylesheet" href="stylesheet/newStyles.css" />
-    <link rel="stylesheet" href="stylesheet/bootstrap.css" />
+    <!-- <link rel="stylesheet" href="stylesheet/bootstrap.css" /> -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
@@ -60,10 +60,10 @@ if (isset($_SESSION["user"])) {
         <div class="w-100 m-0 p-10 p-md-0">
 
             <div class="row bg-white align-items-center">
-                <div class="col-lg-1 ml-0 col-12 logologo offset-lg-1 mb-4 mb-lg-0">
+                <div class="col-lg-1 ml-0 col-12 logologo offset-lg-1 mb-1 mt-1 mb-lg-0">
                     <img src="recourses/logo.png" class="w-100 h-100 object-fit-contain" alt="logo">
                 </div>
-                <div class="col-lg-6 mb-4 col-12">
+                <div class="col-lg-6 mb-0 mb-md-0 col-12">
                     <div class="input-group input-group-lg">
                         <div class="col-12 mb-1 mb-md-0 col-md-6 p-3">
                             <select class="form-select border-none" id="basic_search_select">
@@ -83,8 +83,8 @@ if (isset($_SESSION["user"])) {
                             </select>
                         </div>
                         <!--Search Field-->
-                        <div class="col-12 col-md-6 mb-3 mb-md-0 p-3">
-                            <div class="search">
+                        <div class="col-12 col-md-6 mb-0 mb-md-0 p-3">
+                            <div class="search shadow shadow-sm">
                                 <input type="text" class="form-control border-none" id="basic_search_search" placeholder="Search">
                                 <button class=" m-0" onclick="basic_search();"><i class="fa fa-search"></i></button>
                             </div>
@@ -92,7 +92,7 @@ if (isset($_SESSION["user"])) {
 
                     </div>
                 </div>
-                <div class="col-12 mb-4 col-lg-2" style="text-align: center;">
+                <div class="col-12 mb-4 mb-md-0 col-lg-2" style="text-align: center;">
                     <a href="advane.php" class="link-secondary link1">Advanced</a>
                 </div>
             </div>
