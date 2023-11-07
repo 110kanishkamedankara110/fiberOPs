@@ -3,11 +3,11 @@
     src: url("fonts/Quicksand_Bold.otf");
 } */
 
-/* @font-face {
-    font-family: honey;
-    src: url("../fonts/HoneyScript-Light.ttf");
+ @font-face {
+    font-family: Roboto;
+    src: url("../fonts/Roboto-Regular.ttf");
 }
-
+/*
 * {
     font-family: "quick";
 } */
@@ -29,8 +29,15 @@ body {
     color: tomato;
     background-color: #f57224;
 }
+.bg-orange{
+    background-color: #f57224 !important;
+    color: white !important;
+}
 .bg-f5f5f5{
     background-color: #ececec;
+}
+.w-15{
+    width: 15% !important;
 }
 
 .image {
@@ -243,7 +250,7 @@ body {
 .qty-buttons {
     height: 100%;
     width: 30px;
-    border: solid 3px #e5e5e5;
+    border: none;
     top: 0;
     right: 0;
 }

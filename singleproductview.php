@@ -32,6 +32,7 @@ if (isset($_GET["id"])) {
     <head>
         <title>FIBEROPTICSLK Productview</title>
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./Stylesheet/newStyles.css">
         <!-- <link rel="stylesheet" href="bootstrap.css" /> -->
         <link rel="icon" href="recourses\logo.svg" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -50,16 +51,13 @@ if (isset($_GET["id"])) {
         <?php
         require "loading.php";
         ?>
-        <div class="container-fluid w-100 ">
+        <div class="container-fluid w-100 bg-white">
             <?php
             require "header.php";
             ?>
-            <div class="w-100">
-
-                <div class="w-100 mt-0 singleproduct">
-                    <div class="col-12">
+            <div class="w-lg-75 w-100 mx-auto my-2">
                         <nav>
-                            <ol class=" d-flex flex-wrap mb-1 list-unstyled bg-white rounded">
+                            <ol class=" d-flex flex-wrap mb-1 list-unstyled rounded">
                                 <li class="breadcrumb-item ">
                                     <a href="home.php" class="text-secondary"> Home </a>
                                 </li>
@@ -70,74 +68,78 @@ if (isset($_GET["id"])) {
                             </ol>
                         </nav>
                     </div>
-                            <div class="row align-items-start py-2">
-                                <div class="col-lg-2 order-lg-1 order-2">
-                                    <div class="d-flex flex-column justify-content-center align-items-center">
-                                        <?php
-                                        $im = database::s("SELECT * FROM `images` WHERE `product_id`='" . $id . "'; ");
-                                        $nr = $im->num_rows;
-                                        for ($i = 0; $i < $nr; $i++) {
-                                            $img = $im->fetch_assoc();
-                                        ?>
-                                           
-                                                <div class="col-12 mt-1 mb-1 imim bg-f5f5f5" style="background-image: url('<?php echo $img["code"] ?>');" onclick="bm('<?php echo $img['code'] ?>');"></div>
-                                          
-                                        <?php
-                                        }
+            <div class="w-100 ">
 
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 order-2 order-lg-1 d-none d-lg-block">
-                                    <div class="d-flex flex-column align-items-center  bg-f5f5f5 p-3">
-                                        <div id="bm" class="col-12 mt-1 mb-1 imimim" style="background-image: url('<?php echo $img["code"] ?>');"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 order-3">
+                <div class="col-12 col-md-10 mx-auto mt-0 singleproduct bg-white rounded rounded-lg">
+                    
+                    <div class="row align-items-start py-0">
+                        <div class="col-lg-2 order-lg-1 order-2">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <?php
+                                $im = database::s("SELECT * FROM `images` WHERE `product_id`='" . $id . "'; ");
+                                $nr = $im->num_rows;
+                                for ($i = 0; $i < $nr; $i++) {
+                                    $img = $im->fetch_assoc();
+                                ?>
+
+                                    <div class="col-12 mt-1 mb-1 imim bg-f5f5f5" style="background-image: url('<?php echo $img["code"] ?>');" onclick="bm('<?php echo $img['code'] ?>');"></div>
+
+                                <?php
+                                }
+
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 order-2 order-lg-1 d-none d-lg-block">
+                            <div class="d-flex flex-column align-items-center  bg-f5f5f5 p-3">
+                                <div id="bm" class="col-12 mt-1 mb-1 imimim" style="background-image: url('<?php echo $img["code"] ?>');"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 order-3">
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label class="form-label fs-4 fw-bold mt-0 mb-0"><?php echo $prodet["title"] ?></label>
-                                                </div>
-                                                <!-- <div class="col-12 mt-0 fs-5 ">
+                                            <label class="form-label  mt-0 mb-0 fs-2"><?php echo $prodet["title"] ?></label>
+                                        </div>
+                                        <!-- <div class="col-12 mt-0 fs-5 ">
                                                     <span class="badge badge-sucess">
                                                         <i class="bi bi-star-fill text-warning"></i>&nbsp;<label class="text-black-50"> 4.5 Stars </label>&nbsp;
                                                         <label class="text-black-50">35 Ratings And 45 Reviews</label>
                                                     </span>
                                                 </div> -->
-                                                <div class="col-12">
-                                                    <label class=" fw-bold mt-1 fs-5  text-danger ">Rs. <?php echo $prodet["price"] ?></label>&nbsp;&nbsp;
-                                                    <!-- <label class=" fw-bold mt-1 fs-4  ">Rs. <?php echo $prodet["price"] - (($prodet["price"] / 100) * 5) ?></label> -->
-                                                </div>
+                                        <div class="col-12">
+                                            <label class="mt-0 fs-5  text-orange ">Rs. <?php echo $prodet["price"] ?></label>&nbsp;&nbsp;
+                                            <!-- <label class=" fw-bold mt-1 fs-4  ">Rs. <?php echo $prodet["price"] - (($prodet["price"] / 100) * 5) ?></label> -->
+                                        </div>
 
-                                                <hr  />
-                                                <div class="col-12">
-                                                    <label class="text-black fs-6 ">
-                                                        <b>Warrenty : </b>6 months warrenty
-                                                    </label><br />
-                                                    <label class="text-black fs-6 ">
-                                                        <b>Return Policy : </b>1 months Return
-                                                    </label><br />
-                                                    <label class="text-dark fs-6 ">
-                                                        <b>In Stock : </b><?php echo $prodet["qty"] ?> Items left
-                                                    </label><br />
-                                                    <hr />
+                                        <hr class="my-2"/>
+                                        <div class="col-12">
+                                            <label class="text-black fs-6 ">
+                                                <b>Warrenty : </b>6 months warrenty
+                                            </label><br />
+                                            <label class="text-black fs-6 ">
+                                                <b>Return Policy : </b>1 months Return
+                                            </label><br />
+                                            <label class="text-dark fs-6 mb-0">
+                                                <b>In Stock : </b><?php echo $prodet["qty"] ?> Items left
+                                            </label><br />
+                                            <hr class="my-2"/>
 
-                                                    <label class="text-black-50 fs-6 mb-0">
-                                                        <?php
-                                                        $res = database::s("SELECT * FROM `admin`");
-                                                        $em = ($res->fetch_assoc())["email"];
-                                                        ?>
-                                                        <b>Seller Mail : </b><?= $em ?>
-                                                    </label>
-                                                    <!-- <a class="mt-2 btn btn-secondary" href="">
+                                            <label class="text-secondary small mb-2">
+                                                <?php
+                                                $res = database::s("SELECT * FROM `admin`");
+                                                $em = ($res->fetch_assoc())["email"];
+                                                ?>
+                                                <b>Seller Mail : </b><?= $em ?>
+                                            </label>
+                                            <!-- <a class="mt-2 btn btn-secondary" href="">
                                                         Contact Seller
                                                     </a> -->
-                                                </div>
-                                                <!-- <div class="col-12">
+                                        </div>
+                                        <!-- <div class="col-12">
                                                     <div class="row"> -->
-                                                        <!-- <div class="rounded border border-1 border-warning mt-1">
+                                        <!-- <div class="rounded border border-1 border-warning mt-1">
                                                             <div class="row">
                                                                 <div class="col-md-2 col-sm-2">
                                                                     <img src="single product view\pricetag.png" />
@@ -150,11 +152,11 @@ if (isset($_GET["id"])) {
                                                                 </div>
                                                             </div>
                                                         </div> -->
-<!-- 
+                                        <!-- 
                                                     </div>
                                                 </div> -->
-                                                <!-- <div class="col-12 mb-3"> -->
-                                                    <!-- <div class="row" style="margin-top:15px">
+                                        <!-- <div class="col-12 mb-3"> -->
+                                        <!-- <div class="row" style="margin-top:15px">
                                                         <div class="col-md-6" style="margin-top: 15px;">
                                                             <label class="fs-6 mt-1 fw-bold ">Color Options</label><br />
                                                             <button class="btn btn-primary">Black</button>
@@ -162,117 +164,107 @@ if (isset($_GET["id"])) {
                                                             <button class="btn btn-primary">Blue</button>
                                                         </div>
                                                     </div> -->
-                                                <!-- </div> -->
-                                                <hr/>
+                                        <!-- </div> -->
+                    
 
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                                <div class="position-relative d-flex align-items-center productqty overflow-hidden float-start rounded border border-1 border-secondary">
-                                                                    <span class=" mb-0 small">Qty: </span>
-                                                                    <input disabled style="outline: none;" class="w-100 border-0  fs-6 fw-bold" type="text" value="1" id="qty<?php echo $id ?>" />
-                                                                    <div class="position-absolute qty-buttons">
-                                                                        <div class=" border border-1 border-secondary d-flex flex-column align-items-center qty-inc" onclick="up(<?php echo $prodet['qty'] ?>,<?php echo $id ?>);">
-                                                                            <i class="bi bi-chevron-compact-up"></i>
-                                                                        </div>
-                                                                        <div class=" border border-1 border-secondary d-flex flex-column align-items-center qty-dec" onclick="down(<?php echo $id ?>);">
-                                                                            <i class="bi bi-chevron-compact-down"></i>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                        </div>
-
-                                                        <div class="col-12 col-lg-8">
-                                                            <div class="row align-items-center">
-
-                                                                <?php
-                                                                if (isset($_SESSION["user"])) {
-                                                                ?>
-                                                        
-                                                                        <button class="col-5 col-lg-4 btn btn-primary mb-0 d-block" onclick="addtocart(<?php echo $id ?>,<?php echo $prodet['qty'] ?>)">Add to cart</button>
-                                                              
-
-
-
-
-
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                                <?php
-
-                                                                if ($prodet["qty"] == 0) {
-                                                                ?>
-                                                                    <div class="col-5 col-lg-4">
-                                                                        <button disabled class="btn btn-success d-block" type="submit">Out Of Stock</button>
-                                                                    </div>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-
-                                                                        <button class="col-5 col-lg-4 btn btn-success d-block mb-0" id="payhere-payment" onclick="paynow(<?php echo $id ?>)" type="submit">Buy now</button>
-                                                           
-                                                                <?php
-                                                                }
-
-                                                                ?>
-
-                                                                <div class="col-2 col-lg-2 text-center">
-                                                                    <?php
-                                                                    if ($prodet["qty"] == 0) {
-                                                                    } else {
-                                                                    ?>
-                                                                        <?php
-                                                                        if (isset($_SESSION["user"])) {
-                                                                            $h = "heart" . $id;
-                                                                            if ($nwl == 1) {
-                                                                        ?>
-                                                                                <a onclick="addwatchlist(<?php echo $id ?>);" class="text-danger mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h; ?>" class="bi bi-heart-fill"></i></a>
-                                                                            <?php
-                                                                            } else {
-                                                                            ?>
-                                                                                <a onclick="addwatchlist(<?php echo $id ?>);" class="text-danger mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h; ?>" class="bi bi-heart"></i></a>
-                                                                        <?php
-                                                                            }
-                                                                        }
-
-                                                                        ?>
-                                                                    <?php
-                                                                    }
-
-
-                                                                    ?>
-
-                                                                </div>
-
-
+                                        <div class="col-12">
+                                            <div class="row justify-content-start">
+                                                <div class="col-lg-3 col-12">
+                                                    <div class="position-relative d-flex align-items-center productqty overflow-hidden float-start rounded border-none">
+                                                        <span class=" m-0 small">Qty: </span>
+                                                        <input disabled style="outline: none;" class="w-100 border-0 m-0 fs-6 fw-bold bg-white" type="text" value="1" id="qty<?php echo $id ?>" />
+                                                        <div class="position-absolute qty-buttons">
+                                                            <div class=" border-none d-flex flex-column align-items-center qty-inc" onclick="up(<?php echo $prodet['qty'] ?>,<?php echo $id ?>);">
+                                                                <i class="bi bi-chevron-compact-up m-0"></i>
+                                                            </div>
+                                                            <div class=" border-none d-flex flex-column align-items-center qty-dec" onclick="down(<?php echo $id ?>);">
+                                                                <i class="bi bi-chevron-compact-down m-0"></i>
                                                             </div>
                                                         </div>
 
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-lg-8">
+                                                    <div class="row align-items-center justify-content-lg-start justify-content-center">
+                                                        <!-- Buy Button -->
+                                                        <?php
+                                                        if ($prodet["qty"] == 0) {
+                                                        ?>
+                                                            <div class="col-5 col-lg-4">
+                                                                <button disabled class="btn btn-outlined d-block" type="submit">Out Of Stock</button>
+                                                            </div>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <button class=" btn bg-orange w-50 d-block mb-0" id="payhere-payment" onclick="paynow(<?php echo $id ?>)" type="submit">Buy now</button>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <!-- Add To Cart -->
+                                                        <?php
+                                                        if (isset($_SESSION["user"])) {
+                                                        ?>
+                                                            <button class="w-25 btn btn-outlined mb-0 d-block" onclick="addtocart(<?php echo $id ?>,<?php echo $prodet['qty'] ?>)"><i class="bi bi-cart3 text-dark fw-bolder"></i></button>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                        <div class="w-15 text-center">
+                                                            <?php
+                                                            if ($prodet["qty"] == 0) {
+                                                            } else {
+                                                            ?>
+                                                                <?php
+                                                                if (isset($_SESSION["user"])) {
+                                                                    $h = "heart" . $id;
+                                                                    if ($nwl == 1) {
+                                                                ?>
+                                                                        <a onclick="addwatchlist(<?php echo $id ?>);" class="text-orange mt-1 fs-4"><i id="<?php echo $h; ?>" class="bi bi-heart-fill text-orange bg-orange"></i></a>
+                                                                    <?php
+                                                                    } else {
+                                                                    ?>
+                                                                        <a onclick="addwatchlist(<?php echo $id ?>);" class="text-orange mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h; ?>" class="bi bi-heart text-orange"></i></a>
+                                                                <?php
+                                                                    }
+                                                                }
+
+                                                                ?>
+                                                            <?php
+                                                            }
+
+
+                                                            ?>
+
+                                                        </div>
 
 
                                                     </div>
                                                 </div>
+
+
+
                                             </div>
                                         </div>
-
-
-
                                     </div>
                                 </div>
+
+
+
                             </div>
-                </div>
-
-
-                <div class="col-12 bg-white">
-                    <div class="row d-block me-0 ms-0 mt-4 mb-3 border border-1 border-start-0 border-end-0 border-top-0 border-primary">
-                        <div class="col-md-6">
-                            <span class="fs-3 fw-bold">Related Items</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 bg-white">
+
+
+                <div class="col-12">
+                    <div class="row d-block me-0 ms-0 mt-4 mb-3 ">
+                        <div class="col-md-6">
+                            <span class="fs-3">Related Items</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
                     <div class="row">
                         <?php
                         $simpro = database::s("SELECT `product`.`id`,`category`.`name` 
@@ -286,7 +278,7 @@ if (isset($_GET["id"])) {
                         INNER JOIN `model` ON `product`.`model_id`=`model`.`id` 
                         INNER JOIN `brand` ON `brand`.`id`=`product`.`brand_id` 
                         INNER JOIN `color` ON `color`.`id`=`product`.`color_id` 
-                        INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE `brand`.`name`='" . $prodet["brand"] . "' AND product.`id`!='" . $id . "' LIMIT 4 ; ");
+                        INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE `brand`.`name`='" . $prodet["brand"] . "' AND product.`id`!='" . $id . "' LIMIT 5 ; ");
                         $sn = $simpro->num_rows;
                         for ($f = 0; $f < $sn; $f++) {
                             $sp = $simpro->fetch_assoc();
@@ -300,51 +292,51 @@ if (isset($_GET["id"])) {
                             }
 
                         ?>
-                            <div class="col-md-3 col-5">
-                                <div class="row p-2">
-                                    <div class="card me-1" style="width: 18rem;">
-                                        <img src="<?php echo $spimg["code"]; ?>" class="card-img-top">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?php echo $sp["title"] ?></h5>
-                                            <p class="card-text">Rs.<?php echo $sp["price"] ?></p>
-                                            <?php
-                                            if (isset($_SESSION["user"])) {
-                                            }
-                                            if ($sp["qty"] == 0) {
-                                            ?>
-                                                <input id="qty<?php echo $sp['id'] ?>" type="number" class="form-control mb-1" value="0" min="0" max="<?php echo $sp["qty"] ?>" />
+                            <div class="col-30 item-box p-0 border-none  card shadow shadow-sm rounded  mt-1 mb-1 ms-1">
+                                <div class="item-img-container rounded overflow-hidden">
+                                    <img src="<?php echo $spimg["code"]; ?>" class="card-img-top w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title mb-0"><?php echo $sp["title"] ?></h5>
+                                    <label for="qty" class="text-secondary small">Qty <?php echo $sp["qty"] ?></label>
+                                    <p class="card-text text-orange mb-0">Rs.<?php echo $sp["price"] ?></p>
+                                    <?php
+                                    if (isset($_SESSION["user"])) {
+                                    }
+                                    if ($sp["qty"] == 0) {
+                                    ?>
+                                        <div class="d-flex align-items-center">
+                                            <a class="btn bg-orange btn-sm m-0 disabled w-75">Buy Now</a>
+                                            <a class="btn btn-outlined btn-sm m-0 disabled w-25"><i class="bi bi-cart3 text-dark fw-bolder"></i></a>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <div class="d-flex align-items-center">
+                                            <a href="singleproductview.php?id=<?php echo $sp["id"]; ?>" class="btn bg-orange btn-sm m-0 w-75">Buy Now</a>
+                                            <a class="btn btn-outlined btn-sm m-0 w-25" onclick="addtocart(<?php echo $sp['id'] ?>,1)"><i class="bi bi-cart3 text-dark fw-bolder"></i></a>
+                                        </div>
+
+                                        <?php
+                                        if (isset($_SESSION["user"])) {
+                                            if ($nwl2 == 1) {
+                                        ?>
+                                                <button onclick="addwatchlist(<?php echo $sp['id'] ?>);" class="text-danger mt-1 fs-4 fav-icon p-1 rounded-circle"><i id="<?php echo $h2; ?>" class="far fa-heart h6 mb-0 " aria-hidden="true"></i></button>
 
                                             <?php
                                             } else {
                                             ?>
-                                                <input id="qty<?php echo $sp['id'] ?>" type="number" class="form-control mb-1" value="1" min="1" max="<?php echo $sp["qty"] ?>" />
-
-                                                <a class="btn btn-primary" onclick="addtocart(<?php echo $sp['id'] ?>,<?php echo $sp['qty'] ?>)">Add to cart</a>
-
-                                                <a href="singleproductview.php?id=<?php echo $sp["id"]; ?>" class="btn btn-success">Buy Now</a>
-                                                <?php
-                                                if (isset($_SESSION["user"])) {
-                                                    if ($nwl2 == 1) {
-                                                ?>
-                                                        <a onclick="addwatchlist(<?php echo $sp['id'] ?>);" class="text-danger mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h2; ?>" class="bi bi-heart-fill"></i></a>
-                                                    <?php
-                                                    } else {
-                                                    ?>
-                                                        <a onclick="addwatchlist(<?php echo $sp['id'] ?>);" class="text-danger mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h2; ?>" class="bi bi-heart"></i></a>
-                                            <?php
-                                                    }
-                                                }
+                                                <button onclick="addwatchlist(<?php echo $sp['id'] ?>);" class="text-danger mt-1 fs-4 fav-icon p-1 rounded-circle"><i id="<?php echo $h2; ?>" class="far fa-heart h6 mb-0 " aria-hidden="true"></i></button>
+                                    <?php
                                             }
+                                        }
+                                    }
 
 
 
-                                            ?>
-                                        </div>
-                                    </div>
-
-
-
+                                    ?>
                                 </div>
+
                             </div>
 
                         <?php
@@ -361,14 +353,14 @@ if (isset($_GET["id"])) {
 
                     </div>
                 </div>
-                <div class="col-12 bg-white">
-                    <div class="row d-block me-0 ms-0 mt-4 mb-3 border border-1 border-start-0 border-end-0 border-top-0 border-primary">
+                <div class="col-12">
+                    <div class="row d-block me-0 ms-0 mt-4 mb-3 ">
                         <div class="col-md-6">
-                            <span class="fs-3 fw-bold">Product Details</span>
+                            <span class="fs-3 mb-1">Product Details</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 bg-white">
+                <div class="col-12 bg-white p-lg-5">
                     <div class="row">
                         <div class="col-12">
                             <div class="row">
@@ -381,6 +373,7 @@ if (isset($_GET["id"])) {
 
                             </div>
                         </div>
+                        <hr class="bg-f5f5f5">
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-2">
@@ -393,12 +386,12 @@ if (isset($_GET["id"])) {
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="row">
+                            <div class="row  align-items-start">
                                 <div class="col-2">
                                     <label class="form-label">Description</label>
                                 </div>
                                 <div class="col-10">
-                                    <textarea disabled cols="50" rows="10"><?php echo $prodet["description"] ?></textarea>
+                                    <textarea disabled cols="50" rows="10" class="bg-white border-none"><?php echo $prodet["description"] ?></textarea>
                                 </div>
 
                             </div>
@@ -411,10 +404,10 @@ if (isset($_GET["id"])) {
 
 
             </div>
-            <div class="col-12 bg-white">
-                <div class="row d-block me-0 ms-o mb-3 mt-4 border border-1 border-start-0 border-end-0 border-top-0">
+            <div class="col-12">
+                <div class="row d-block me-0 ms-1 mb-3 mt-4">
                     <div class="col-md-6 ">
-                        <span class="fs-3 fw-bold">Feedbacks...</span>
+                        <span class="fs-3">Feedbacks...</span>
                     </div>
                 </div>
             </div>
@@ -462,12 +455,13 @@ if (isset($_GET["id"])) {
         <?php
                     }
         ?>
-        <?php
-        // require "footer.php";
-        ?>
+
         </div>
-
-
+        </div>
+        </div>
+        <?php
+        require "footer.php";
+        ?>
 
 
 

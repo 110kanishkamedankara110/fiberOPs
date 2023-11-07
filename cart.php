@@ -28,48 +28,39 @@ if (isset($_SESSION["user"])) {
     </head>
 
     <body>
-    <?php
+        <?php
         require "loading.php";
         ?>
-        <div class="container-fluid">
+        <div class="container-fluid w-100 px-2">
+            <?php
+            require "header.php"
+            ?>
+            <div class="col-12 p-0">
+                <nav aria-label="breadcrumb mb-0">
+                    <ol class="breadcrumb bg-white">
+                        <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                    </ol>
+                </nav>
+            </div>
+            <hr class=" "/>
             <div class="row">
-                <?php
-                require "header.php"
-                ?>
 
-
-
-
-                <div class="col-12" style="background-color: #E3E5E4;">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Cart</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-12 border border-1 border-secondary rounded mb-3">
+                <div class="col-12 rounded">
                     <div class="row">
-                        <div class="col-12">
-                            <label class="form-label fs-1 fw-bolder">cart <i class="bi bi-cart3 "></i> </label>
+                        <div class="col-6">
+                            <label class="form-label fs-4 fw-bolder mb-0">cart <i class="bi bi-cart3 "></i> </label>
                         </div>
-                        <div class="col-12 col-lg-6">
-                            <hr class="hr1">
-                        </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="row">
-                                <div class="offset-0 offset-lg-2 col-12 col-lg-6 mb-3">
-                                    <input type="text" class="form-control" id="search" placeholder="Search in Cart" />
+                                <div class="offset-0 offset-lg-2 col-12 col-lg-6 mb-0">
+                                    <input type="text" class="form-control mb-0" id="search" placeholder="Search in Cart" />
                                 </div>
-                                <div class="col-12 col-lg-2">
-                                    <button class="col-12 btn btn-outline-primary" style="background-color: white;color:purple;border:solid purple 0.1px" onmouseover="this.style.color='white';this.style.backgroundColor='purple';this.style.border='solid white 0.1px'" onmouseout="this.style.color='purple';this.style.backgroundColor='white';this.style.border='solid purple 0.1px'" onclick="searchcart();" >Search</button>
-                                </div>
+                                <button class="col-12 col-lg-2 btn btn-outline-primary m-0" style="background-color: white;color:purple;border:solid purple 0.1px" onmouseover="this.style.color='white';this.style.backgroundColor='purple';this.style.border='solid white 0.1px'" onmouseout="this.style.color='purple';this.style.backgroundColor='white';this.style.border='solid purple 0.1px'" onclick="searchcart();">Search</button>
+
                             </div>
                         </div>
-                        <div class="col-12">
-                            <hr class="hr1">
-                        </div>
-
+                        <hr class="mt-2 "/>
                         <?php
 
                         if ($cpronr == 0) {
@@ -127,7 +118,7 @@ if (isset($_SESSION["user"])) {
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <span class="fw-bold text-black-50 fs-5">Seller : </span>
-                                                         
+
                                                             <hr />
                                                         </div>
                                                     </div>
@@ -142,7 +133,10 @@ if (isset($_SESSION["user"])) {
                                                             <span class="text-white"><?php echo $wlpro["description"] ?></span>
                                                         </div>
                                                     </div>
-                                                    <img src="<?php echo $imgpath["code"] ?>" class="img-fluid rounded-start" />
+                                                    <div>
+                                                    <img src="<?php echo $imgpath["code"] ?>" class="img-fluid rounded-start h-100 w-100 object-fit-cover" />
+                                                    </div>
+                                                    
                                                 </div>
 
                                                 <div class="col-md-5">
@@ -156,7 +150,7 @@ if (isset($_SESSION["user"])) {
                                                         <br />
                                                         <span class="fw-bold text-black-50 fs-5">Quentity : </span>
                                                         <!-- <input disabled id="qty<?php echo $wlpro['id'] ?>" type="text" value="<?php echo $pro["qty"] ?>" class="rounded mt-3 border border-2 border-secondary fs-4 fw-bold px-3 cartqty" /> -->
-                                                        <input id="qty<?php echo $pro['id'] ?>" type="number" onchange="updateCartVal('<?=$pro['id']?>')" class="rounded mt-3 border border-2 border-secondary fs-4 fw-bold px-3 cartqty" value="<?=$pro["qty"]?>" min="1" max="<?php echo $wlpro["qty"] ?>" />
+                                                        <input id="qty<?php echo $pro['id'] ?>" type="number" onchange="updateCartVal('<?= $pro['id'] ?>')" class="rounded mt-3 border border-2 border-secondary fs-4 fw-bold px-3 cartqty" value="<?= $pro["qty"] ?>" min="1" max="<?php echo $wlpro["qty"] ?>" />
                                                         <br />
                                                         <span class="fw-bold text-black-50 fs-5">Delivery Fee :</span> &nbsp;
                                                         &nbsp; <span class="fw-bold text-black">Rs.<?php echo $shipping; ?></span>
