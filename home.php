@@ -204,10 +204,10 @@ INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE  `sta
 
                     <div onclick="window.location='singleproductview.php?id=<?php echo $pro['id']; ?>'" class="col-48 item-box p-0 border-none  card shadow shadow-sm rounded  mt-1 mb-1 ms-1">
                         <div class="item-img-container rounded overflow-hidden">
-                            <img src="<?php echo $imgpath["code"]; ?>" class="w-100 h-100 object-fit-contain">
+                            <img src="<?php echo $imgpath["code"]; ?>" class="w-100 h-100 object-fit-cover">
                         </div>
 
-                        <div class="card-body px-1">
+                        <div class="card-body px-2">
                             <?php
                             if ($nwl == 1) {
                             ?>
@@ -220,7 +220,7 @@ INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE  `sta
                             <?php
                             }
                             ?>
-                            <span class="card-text text-secondary text-sm"><?php echo $pro["title"] ?></span><br />
+                            <span class="card-text text-dark text-sm"><?php echo $pro["title"] ?></span><br />
                             <span class="card-text text-orange text-sm">Rs. <?php echo $pro["price"] ?> </span><br />
                             <?php
                             if ($pro["qty"] > 0) {
