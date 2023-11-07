@@ -22,76 +22,76 @@ if (isset($_SESSION["user"])) {
 
     </head>
 
-    <body class="bg-dark" style="overflow-x: hidden;">
-    <?php
+    <body class="bg-white px-1" style="overflow-x: hidden;">
+        <?php
         require "loading.php";
+        require "header.php";
         ?>
-        <div class="container-fluid bg-white rounded mt-5 mb-5 ">
-            <div class="row">
-            <nav>
-                            <ol class=" d-flex flex-wrap mb-2 mt-2 list-unstyled bg-white rounded">
-                                <li class="breadcrumb-item ">
-                                    <a href="home.php">Home</a>
-                                </li>
 
-                                <li class="breadcrumb-item active">
-                                    <a class="text-decoration-none text-black-50" href="#">My Profile</a>
-                                </li>
-                            </ol>
-                        </nav>
-                <div class="col-md-4 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <div class="container-fluid bg-white rounded mt-2 mb-2 ">
+            <nav>
+                <ol class=" d-flex flex-wrap list-unstyled bg-white rounded">
+                    <li class="breadcrumb-item ">
+                        <a href="home.php">Home</a>
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        <a class="text-decoration-none text-black-50" href="#">My Profile</a>
+                    </li>
+                </ol>
+            </nav>
+            <div>
+                <div class="col-md-4 px-3 mx-auto border-right bg-white shadow text-dark mb-3 rounded-3 py-4">
+                    <div class="py-0">
+                        <div class="text-center my-1">
+                            <h4>Profile Settings</h4>
+                        </div>
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-0">
                         <?php
-if($_SESSION["user"]["image"]!=null) {
-    $img=$_SESSION["user"]["image"];
-}else{
-                            $img="recourses/demoProfileImg.jpg";
+                        if ($_SESSION["user"]["image"] != null) {
+                            $img = $_SESSION["user"]["image"];
+                            //REMOVE THIS AFTER FRONTEND DONE
+                            $img = "recourses/demoProfileImg.jpg";
+                        } else {
+                            $img = "recourses/demoProfileImg.jpg";
                         }
                         ?>
-                        
-                        <img id="shdiv" src="<?=$img?>" style="width: 200px;aspect-ratio: 1;border-radius: 50%;"/>
-                        <span class="font-weight-bold"><?php echo $_SESSION["user"]["first_name"]." ".$_SESSION["user"]["last_name"]  ?></span>
-                        <span class="text-black-50"><?php echo $_SESSION["user"]["email"] ?></span>
+                        <div class="w-25 mx-auto position-relative">
+                        <img id="shdiv" src="<?php echo $img ?>" class="w-100 h-100 object-fit-cover" />
+                        <label for="profileimage">
+                        <i class="fa-solid fa-pen"></i>
                         <input onchange="chimg();" type="file" accept="image/*" class="d-none" id="profileimage" enctype="multipart/form-data" />
-                        <label class="btn btn-primary mt-3" for="profileimage" style="background-color: purple;">Update profile Image</label>
+                        </label>
+                        </div>
+                        <span class="font-weight-bold"><?php echo $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"]  ?></span>
+                        <span class="text-black-50"><?php echo $_SESSION["user"]["email"] ?></span>
+                        <lable class="form-label small text-secondary">Registred on: <?php echo $_SESSION["user"]["register_date"] ?></lable>
 
 
                     </div>
-                </div>
-                <div class="col-md-7 border-right bg-dark text-white mb-3 rounded-3">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-justify-content-between align-items-center mb-3">
-                            <h4>Profile Settings</h4>
-
-                        </div>
-                        
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="form-label">Name</label>
-                                <input id="fname" type="text" class="form-control" placeholder="First Name" value="<?php echo $_SESSION["user"]["first_name"] ?>" />
+                                <input id="fname" type="text" class="form-control input-sm" placeholder="First Name" value="<?php echo $_SESSION["user"]["first_name"] ?>" />
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Surname</label>
-                                <input id="lname" type="text" class="form-control" placeholder="Last Name" value="<?php echo $_SESSION["user"]["last_name"] ?>" />
+                                <input id="lname" type="text" class="form-control input-sm" placeholder="Last Name" value="<?php echo $_SESSION["user"]["last_name"] ?>" />
                             </div>
 
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12 mb-3">
+                        <div class="row mt-1">
+                            <div class="col-md-12 mb-1">
                                 <label class="form-label">Mobile</label>
-                                <input id="mobile" type="text" class="form-control" placeholder="Mobile Number" value="<?php echo $_SESSION["user"]["mobile"] ?>" />
+                                <input id="mobile" type="text" class="form-control input-sm" placeholder="Mobile Number" value="<?php echo $_SESSION["user"]["mobile"] ?>" />
                             </div>
                             <div class="col-md-12 mb-3">
                                 <lable class="form-label">Password</lable>
-                                <input id="" disabled type="text" class="form-control" placeholder="Password" value="<?php echo $_SESSION["user"]["password"] ?>" />
+                                <input id="" disabled type="text" class="form-control input-sm" placeholder="Password" value="<?php echo $_SESSION["user"]["password"] ?>" />
                             </div>
                             <div class="col-md-12 mb-3">
                                 <lable class="form-label">Email</lable>
-                                <input disabled id="email" type="email" class="form-control" placeholder="Email Address" value="<?php echo $_SESSION["user"]["email"] ?>" />
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <lable class="form-label">Registred Date And Time</lable>
-                                <input disabled type="text" class="form-control" placeholder="Registred Date And Time" value="<?php echo $_SESSION["user"]["register_date"] ?>" />
+                                <input disabled id="email" type="email" class="form-control input-sm" placeholder="Email Address" value="<?php echo $_SESSION["user"]["email"] ?>" />
                             </div>
                             <?php
                             $usermail = $_SESSION["user"]["email"];
@@ -103,9 +103,9 @@ if($_SESSION["user"]["image"]!=null) {
                             ?>
                                 <div class="col-md-12 mb-3">
                                     <lable class="form-label">Address Line 1</lable>
-                                    <input  id="addressline1" type="text" class="form-control" placeholder="Address Line 1" value="<?php echo $row["line1"] ?>" />
+                                    <input id="addressline1" type="text" class="form-control" placeholder="Address Line 1" value="<?php echo $row["line1"] ?>" />
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-1">
                                     <lable class="form-label">Address Line 2</lable>
                                     <input id="addressline2" type="text" class="form-control" placeholder="Address Line 2" value="<?php echo $row["line2"] ?>" />
                                 </div>
@@ -118,7 +118,7 @@ if($_SESSION["user"]["image"]!=null) {
                             <lable class="form-label">Address Line 1</lable>
                             <input id="addressline1" type="text" class="form-control" placeholder="Address Line 1" value="" />
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <lable class="form-label">Address Line 2</lable>
                             <input type="text" id="addressline2" class="form-control" placeholder="Address Line 2" value="" />
                         </div>
@@ -140,84 +140,84 @@ if($_SESSION["user"]["image"]!=null) {
                             `user_has_address`.`location_id`=`location`.`id` INNER JOIN `city` ON `city`.`id`=`location`.`city_id` WHERE `user_has_address`.`user_email`='" . $usermail . "';");
                 $n2 = $city->num_rows;
                 if ($n2 == 1) {
-                    $row2=$city->fetch_assoc();
+                    $row2 = $city->fetch_assoc();
                 ?>
-                    <div class="row mt-3">
+                    <div class="row mt-1">
                         <div class="col-md-6">
                             <lable class="form-label">City</lable>
-                            <select id="city" class="form-select" aria-selected="<?php echo $row2["name"];?>">
-                            <option>Select City</option>
-                                <?php
-                                $citylist = database::s("SELECT * FROM `city`"); 
-                                  $n5 = $citylist->num_rows;
-                                for($c=0;$c<$n5;$c++){
-                                    $f=$citylist->fetch_assoc();
-                                    if($f["name"]==$row2["name"]){
-                                        ?>
-                                    <option selected><?php echo $f["name"]?></option>
-                                    <?php
-    
-                                    }else{
-                                        ?>
-                                    <option><?php echo $f["name"]?></option>
-                                    <?php
-
-                                    }
-                                                                    }
-                                ?>
-
-                                
-                            </select>
-
-                        </div>
-                    <?php
-                }else{
-                    ?>
-                    <div class="row mt-3">
-                            <div class="col-md-6">
-                                <lable class="form-label">City</lable>
-                                <select id="city" class="form-select">
+                            <select id="city" class="form-select" aria-selected="<?php echo $row2["name"]; ?>">
                                 <option>Select City</option>
                                 <?php
-                                $citylist = database::s("SELECT * FROM `city`"); 
-                                  $n5 = $citylist->num_rows;
-                                for($c=0;$c<$n5;$c++){
-                                    $f=$citylist->fetch_assoc();
-                                    ?>
-                                    <option><?php echo $f["name"]?></option>
+                                $citylist = database::s("SELECT * FROM `city`");
+                                $n5 = $citylist->num_rows;
+                                for ($c = 0; $c < $n5; $c++) {
+                                    $f = $citylist->fetch_assoc();
+                                    if ($f["name"] == $row2["name"]) {
+                                ?>
+                                        <option selected><?php echo $f["name"] ?></option>
                                     <?php
+
+                                    } else {
+                                    ?>
+                                        <option><?php echo $f["name"] ?></option>
+                                <?php
+
+                                    }
                                 }
                                 ?>
 
-                                
+
                             </select>
 
-                            </div>
+                        </div>
                     <?php
-                }
-
-
-
+                } else {
                     ?>
+                        <div class="row mt-1">
+                            <div class="col-md-6">
+                                <lable class="form-label">City</lable>
+                                <select id="city" class="form-select">
+                                    <option>Select City</option>
+                                    <?php
+                                    $citylist = database::s("SELECT * FROM `city`");
+                                    $n5 = $citylist->num_rows;
+                                    for ($c = 0; $c < $n5; $c++) {
+                                        $f = $citylist->fetch_assoc();
+                                    ?>
+                                        <option><?php echo $f["name"] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+
+
+                                </select>
+
+                            </div>
+                        <?php
+                    }
+
+
+
+                        ?>
 
 
 
 
 
-                    
+
                         <div class="col-md-6">
                             <?php
-                                $gender=database::s("SELECT * FROM `gender` WHERE `gender`.`id`='".$_SESSION["user"]["gender_id"]."'; ");
-                                $g=$gender->fetch_assoc();
+                            $gender = database::s("SELECT * FROM `gender` WHERE `gender`.`id`='" . $_SESSION["user"]["gender_id"] . "'; ");
+                            $g = $gender->fetch_assoc();
                             ?>
                             <lable class="form-label">Gender</lable>
-                            <input type="text" disabled class="form-control" placeholder="Gender" value="<?php echo $g["name"];?>" />
+                            <input type="text" disabled class="form-control" placeholder="Gender" value="<?php echo $g["name"]; ?>" />
 
                         </div>
-                        <div class="mt-5 text-center">
-                            <button class=" btn btn-primary" style="background-color: purple;" onclick="updateprofile();" >Update Profile</button>
+                        <div class="mt-1 text-center">
+                            <button class=" btn btn-primary" style="background-color: purple;" onclick="updateprofile();">Update Profile</button>
                         </div>
-                    </div>
+                        </div>
 
 
                     </div>
