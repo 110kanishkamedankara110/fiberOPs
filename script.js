@@ -1258,7 +1258,7 @@ function Verify() {
 
 
 function act() {
-    setInterval(timetime, 600);
+    setInterval(timetime, 1000);
 }
 
 function timetime() {
@@ -1762,4 +1762,15 @@ function rf2(x) {
     }
     r.open("POST", "selusermassage2.php", true);
     r.send(f);
+}
+
+//Menu Toggle
+const sideMenu = document.getElementById('sideMenu');
+function toggleMenu(){
+    if(sideMenu.style.width !== '20%'){
+        sideMenu.style.width = '20%';
+        
+    }else{
+        sideMenu.style.width = '25%';
+    }
 }

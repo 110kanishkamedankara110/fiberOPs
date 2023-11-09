@@ -1,5 +1,5 @@
 <div style="background-color: green;" class="row bg-dark text-white">
-    <div style="background-color: blue;" class="col-12 align-self-start p-2">
+    <div class="bg-orange col-12 align-self-start p-2">
         <span>
             <?php
             if (isset($_SESSION["user"])) { ?>

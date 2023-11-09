@@ -151,7 +151,7 @@ p {
     flex-basis: 25%;
     padding: 10px;
     min-width: 200px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     transition: 0.5s;
 }
 
@@ -192,9 +192,9 @@ h4 {
     color: var(--primaryCol);
 }
 
-.col-4:hover {
+/* .col-4:hover {
     transform: translateY(-5px);
-}
+} */
 
 .viewall-btn {
     display: block;
