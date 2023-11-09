@@ -362,7 +362,6 @@ html {
     background-image: linear-gradient(to left bottom, rgb(232, 152, 232) 0%, white 100%);
     overflow: hidden;
 }
-
 .app {
     position: relative;
     min-width: 80%;
@@ -861,13 +860,13 @@ p {
     padding-right: 25px;
 }
 
-.col-4 {
+/* .col-4 {
     flex-basis: 25%;
     padding: 10px;
     min-width: 200px;
     margin-bottom: 50px;
     transition: 0.5s;
-}
+} */
 
 .col-4 img {
     width: 100%;
@@ -906,9 +905,8 @@ h4 {
     color: var(--primaryCol);
 }
 
-.col-4:hover {
-    transform: translateY(-5px);
-}
+/* .col-4:hover {
+} */
 
 .viewall-btn {
     display: block;
