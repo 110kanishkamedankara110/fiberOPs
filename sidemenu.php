@@ -10,7 +10,7 @@
                                 </div>
                                 <div class="nav flex-column nav-pills me-3 mt-3" role="tablist" aria-orientation="vertical">
                                     <nav class="nav flex-column text-left">
-                                        <a style="font-family: 'Quicksand';" class="nav-link active fs-6" aria-current="page" href="#">Dashboard</a>
+                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6" aria-current="page" href="adminpannel.php">Dashboard</a>
                                         <a style="font-family: 'Quicksand';" class="nav-link fs-6" href="manageusers.php">Manage Users</a>
                                         <a style="font-family: 'Quicksand';" class="nav-link fs-6" href="manageproduct.php">Manage Products</a>
                                         <a style="font-family: 'Quicksand';" class="nav-link fs-6"  href="sellerproductview.php">Products</a>

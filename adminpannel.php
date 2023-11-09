@@ -55,8 +55,8 @@ if (isset($_SESSION["admin"])) {
                     ?>
 
                     <div class="row">
-                        <div class="col-12 mt-3 mb-3 text-white">
-                            <h2 class="fw-bold">Dashboard</h2>
+                        <div class="col-12 mt-3 mb-3 text-dark">
+                            <h2 class="fw-bold ">Dashboard</h2>
                         </div>
                         <div class="col-12 bg-white">
                             <div class="row">
@@ -222,6 +222,7 @@ if (isset($_SESSION["admin"])) {
                         $freeq = database::s("SELECT `product_id`,COUNT(`id`) AS `value` FROM `invoice` WHERE `date` LIKE '" . "%" . $today . "%" . "' GROUP BY `product_id` ORDER BY `value` DESC LIMIT 1 ; ");
                         $freqnum = $freeq->num_rows;
                         if ($freqnum == 0) {
+                            echo 'No Items';
                         } else {
                             for ($z = 0; $z < $freqnum; $z++) {
                                 $frow = $freeq->fetch_assoc();
