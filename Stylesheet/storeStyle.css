@@ -709,9 +709,14 @@ html {
     border: solid 0.1px white;
     color: white;
 }
-
+.hover{
+   transition: 0.5s;
+}
+.hover:hover{
+    margin-top: -10px;
+}
 .bgbg {
-    background-image: url("../recourses/bg.svg");
+ background-image: url("https://img.freepik.com/free-vector/circuit-board-neon-background_23-2148335792.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -729,7 +734,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-transform: capitalize;
+   
     scroll-behavior: smooth;
     --backColor: #e6f90b;
     --primaryCol: #f57224;
@@ -1340,4 +1345,11 @@ ul {
         display: block;
         text-align: center;
     }
+}
+
+#sideMenu{
+    transition: all 0.3s;
+}
+.dash-card{
+    min-width: 180px;
 }

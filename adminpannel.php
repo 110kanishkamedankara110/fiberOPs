@@ -25,82 +25,57 @@ if (isset($_SESSION["admin"])) {
         <link rel="stylesheet" href="style.css" />
     </head>
 
-    <body onload="act();" class="bgbg" style="margin: 0;">
+    <body onload="act();" class="bgbg bg-f5f5f5" style="margin: 0;">
 
         <?php
         require "loading.php";
         ?>
 
         <div class="container-fluid">
+            <div class="row align-items-start justify-content-between">
+
+                <?php
+                require('sidemenu.php');
+                ?>
+
+                <div class="col-12 col-md-9">
+                    <?php
+                    $start_date = new DateTime("2021-10-01 00:00:00");
+
+                    $tdate = new DateTime();
+                    $tz = new DateTimeZone("Asia/Colombo");
+                    $tdate->setTimezone($tz);
+
+                    $endDate = new DateTime($tdate->format("Y-m-d H:i:s"));
 
 
+                    $difference = $endDate->diff($start_date);
 
 
+                    ?>
 
-
-
-
-
-            <div class="row">
-
-                <div class="col-12 col-lg-3">
-                    <div class="row">
-
-                        <div class=" align-items-start bg-dark col-12 text-center">
-                            <div class="row g-1">
-                                <div class="col-12 mt-5">
-                                    <h4 class="text-white"><?php echo $_SESSION["admin"]["f_name"] . " " . $_SESSION["admin"]["l_name"] ?></h4>
-                                    <hr class="border border-1 border-white" />
-                                </div>
-                                <div class="nav flex-column nav-pills me-3 mt-3" role="tablist" aria-orientation="vertical">
-                                    <nav class="nav flex-column">
-                                        <a style="font-family: 'Quicksand';" class="nav-link active fs-5" aria-current="page" href="#">Dashboard</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-5" href="manageusers.php">Manage Users</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6" href="manageproduct.php">Manage Products</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6"  href="sellerproductview.php">Products</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6"  href="myselling.php">Sold</a>
-
-                                 
-                                        <p style="font-family: 'Quicksand';" style="cursor: pointer !important;"  onclick="gotoaddproduct();" class="nav-link fs-6" href="">Add Products</p>
-                                        
-                                      
-                                    </nav>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <hr class="border border-1 border-white" />
-                                    <h4 class="text-white">Selling History</h4>
-                                    <hr class="border border-1 border-white" />
-                                </div>
-                                <div class="col-12 mt-3 d-grid">
-                                    <label class="form-label text-white fw-bold">From Date</label>
-                                    <input id="fromdate" class="form-control" type="date" />
-                                    <label class="form-label text-white mt-2">To Date</label>
-                                    <input id="todate" class="form-control " type="date" />
-                                    <a class="btn btn-primary mt-2" id="historylink" onclick="dailysellings();">View Sellings</a>
-                                    <!-- <hr class="border border-1 border-white" />
-                                    <h4 class="text-white" style="cursor:pointer" onclick="dailysellings()" >Daily Sellings</h4> -->
-                                    <hr class="border border-1 border-white" />
-                                    <button class="btn btn-danger" onclick="window.location='adminsignout.php'">Sign Out</button>
-                                    <hr class="border border-1 border-white" />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-9">
                     <div class="row">
                         <div class="col-12 mt-3 mb-3 text-white">
                             <h2 class="fw-bold">Dashboard</h2>
+                        </div>
+                        <div class="col-12 bg-white">
+                            <div class="row">
+                                <div class="col-12 col-lg-4 ">
+                                    <label class="fs-6 fw-bold text-dark">Total Active Time</label>
+                                </div>
+
+                                <div class="col-12 col-lg-8 text-white" id="timetime">
+                                    <label class="fs-6 fw-bold"><?php echo $difference->format("%y") . " Y " . $difference->format("%m") . " M " . $difference->format("%d") . " Days " . $difference->format("%H") . " Hours " . $difference->format("%i") . " Min " . $difference->format("%s") . " Sec " ?></label>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <hr />
                         </div>
                         <div class="col-12">
-                            <div class="row g-1">
+                            <div class="row g-1 flex-wrap">
 
-                                <div class="col-4 px-1">
+                                <div class="col-4 px-1 dash-card">
                                     <div class="row g-1">
                                         <?php
                                         $today = date("Y-m-d");
@@ -133,11 +108,13 @@ if (isset($_SESSION["admin"])) {
 
 
                                         ?>
-                                        <div class="col-12 bg-primary text-white text-center rounded" style="height: 150px;">
+                                        <div class="col-12 bg-primary text-white text-center rounded hover" style="height: 150px;">
 
                                             <br />
-                                            <span class="fs-5 fw-bold">Daily Earnings</span>
+                                            <span class="fs-5 fw-bold mb-0">Daily Earnings</span>
+                                            <hr>
                                             <br />
+
                                             <span class="fs-6 ">Rs. <?php echo $a ?> .00</span>
                                         </div>
 
@@ -145,13 +122,14 @@ if (isset($_SESSION["admin"])) {
                                 </div>
 
 
-                                <div class="col-4 px-1">
+                                <div class="col-4 px-1 dash-card">
                                     <div class="row g-1">
 
-                                        <div class="col-12 bg-white text-black text-center rounded" style="height: 150px;">
+                                        <div class="col-12 bg-white text-black text-center rounded hover" style="height: 150px;">
 
                                             <br />
                                             <span class="fs-5 fw-bold">Monthly Earnings</span>
+                                            <hr>
                                             <br />
                                             <span class="fs-6 ">Rs. <?php echo $month; ?> .00</span>
                                         </div>
@@ -161,13 +139,14 @@ if (isset($_SESSION["admin"])) {
 
 
 
-                                <div class="col-4 px-1">
+                                <div class="col-4 px-1 dash-card">
                                     <div class="row g-1">
 
-                                        <div class="col-12 bg-dark text-white text-center rounded" style="height: 150px;">
+                                        <div class="col-12 bg-dark text-white text-center rounded hover" style="height: 150px;">
 
                                             <br />
                                             <span class="fs-5 fw-bold">Today Sellings</span>
+                                            <hr>
                                             <br />
                                             <span class="fs-6 "><?php echo $dayqty; ?> Item</span>
                                         </div>
@@ -177,13 +156,14 @@ if (isset($_SESSION["admin"])) {
 
 
 
-                                <div class="col-4 px-1">
+                                <div class="col-4 px-1 dash-card">
                                     <div class="row g-1">
 
-                                        <div class="col-12 bg-secondary text-white text-center rounded" style="height: 150px;">
+                                        <div class="col-12 bg-secondary text-white text-center rounded hover" style="height: 150px;">
 
                                             <br />
                                             <span class="fs-5 fw-bold">Monthly Sellings</span>
+                                            <hr>
                                             <br />
                                             <span class="fs-6 "><?php echo $monthqty ?> Items</span>
                                         </div>
@@ -194,13 +174,14 @@ if (isset($_SESSION["admin"])) {
 
 
 
-                                <div class="col-4 px-1">
+                                <div class="col-4 px-1 dash-card">
                                     <div class="row g-1">
 
-                                        <div class="col-12 bg-success text-white text-center rounded" style="height: 150px;">
+                                        <div class="col-12 bg-success text-white text-center rounded hover" style="height: 150px;">
 
                                             <br />
                                             <span class="fs-5 fw-bold">Total Sellings</span>
+                                            <hr>
                                             <br />
                                             <span class="fs-6 "><?php echo $totqty ?> Items</span>
                                         </div>
@@ -210,17 +191,18 @@ if (isset($_SESSION["admin"])) {
 
 
 
-                                <div class="col-4 px-1">
+                                <div class="col-4 px-1 dash-card">
                                     <div class="row g-1">
                                         <?php
 
                                         $custo = database::s("SELECT * FROM `user` ;");
                                         $users = $custo->num_rows;
                                         ?>
-                                        <div class="col-12 bg-danger text-white text-center rounded" style="height: 150px;">
+                                        <div class="col-12 bg-danger text-white text-center rounded hover" style="height: 150px;">
 
                                             <br />
                                             <span class="fs-5 fw-bold">Total Engagements</span>
+                                            <hr>
                                             <br />
                                             <span class="fs-6 "><?php echo $users ?> Members</span>
                                         </div>
@@ -235,30 +217,7 @@ if (isset($_SESSION["admin"])) {
                         <div class="col-12">
                             <hr>
                         </div>
-                        <?php
-                        $start_date = new DateTime("2021-10-01 00:00:00");
 
-                        $tdate = new DateTime();
-                        $tz = new DateTimeZone("Asia/Colombo");
-                        $tdate->setTimezone($tz);
-
-                        $endDate = new DateTime($tdate->format("Y-m-d H:i:s"));
-
-
-                        $difference = $endDate->diff($start_date);
-
-
-                        ?>
-                        <div class="col-12 bg-dark">
-                            <div class="row">
-                                <div class="col-12 col-lg-6 text-center mt-3 mb-3 ">
-                                    <label class="form-label fs-4 fw-bold text-white">Total Active Time</label>
-                                </div>
-                                <div class="col-12 col-lg-6 text-center mt-3 mb-3 " id="timetime">
-                                    <label class="form-label fs-4 fw-bold text-success"><?php echo $difference->format("%y") . " Years " . $difference->format("%m") . " Months " . $difference->format("%d") . " Dates " . $difference->format("%H") . " Hours " . $difference->format("%i") . " Minuts " . $difference->format("%s") . " Seconds " ?></label>
-                                </div>
-                            </div>
-                        </div>
                         <?php
                         $freeq = database::s("SELECT `product_id`,COUNT(`id`) AS `value` FROM `invoice` WHERE `date` LIKE '" . "%" . $today . "%" . "' GROUP BY `product_id` ORDER BY `value` DESC LIMIT 1 ; ");
                         $freqnum = $freeq->num_rows;
@@ -324,11 +283,12 @@ if (isset($_SESSION["admin"])) {
                     </div>
                 </div>
 
-                <?php require "footer.php"; ?>
+
             </div>
+
         </div>
 
-
+        <?php require "footer.php"; ?>
 
         <script src="script.js"></script>
         <script src="bootstrap.js"></script>
