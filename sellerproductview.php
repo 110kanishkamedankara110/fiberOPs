@@ -23,165 +23,159 @@ if (isset($_SESSION["admin"])) {
 
     </head>
 
-    <body style="overflow-x: hidden;background-color: #E9EBEE;">
-    <?php
+    <body style="overflow-x: hidden;" class="bg-light p-0">
+        <?php
         require "loading.php";
         ?>
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <div class="row">
                 <!--head-->
 
-                <div class="col-12 " style="background-color: purple;">
+                <div class="col-12 px-2" style="background-color: purple;">
                     <div class="row">
                         <div class="col-5">
-                            <div class="row">
+                            <div class="row p-2 align-items-center">
                                 <?php
                                 $user = database::s("SELECT * FROM `admin` WHERE `email`='" . $_SESSION["admin"]["email"] . "'; ");
                                 $userimg = $user->fetch_assoc();
-                                
+
                                 ?>
-                                    <div class="col-md-4 col-12 mt-1 mb-1">
-                                        <img class="rounded-circle" height="90px" width="90px" src="recourses\demoProfileImg.jpg" />
-                                    </div>
+                                <div class="col-md-1 col-6 mt-1 mb-1 p-0 aspect-ratio-square rounded-circle overflow-hidden">
+                                    <img class="w-100 h-100 object-fit-cover" src="recourses\demoProfileImg.jpg" />
+                                </div>
                                 <?php
-                               ?>
+                                ?>
 
-
-
-                                <div class="col-md-8 col-12">
-                                    <div class="row">
-                                        <div class="col-12 mt-4 text-white">
+                                <div class="col-md-10 col-12 m-0 p-0">
+                                    <div>
+                                        <div class="text-white">
                                             <span class="fw-bold"><?php echo $_SESSION["admin"]["f_name"] . " " . $_SESSION["admin"]["l_name"] ?></span>
                                         </div>
-                                        <div class="col-12">
+                                        <div>
                                             <span class="text-white"><?php echo $_SESSION["admin"]["email"] ?></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-6 col-md-7">
                             <div class="row">
                                 <div class="col-12 mt-3">
-                                    <h1 class="text-white fw-bold ">My Products</h1>
+                                    <h3 class="text-white ">My Products</h3>
                                 </div>
                             </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
                     </div>
-                    <div class="col-12">
-                        <nav>
-                            <ol class=" d-flex flex-wrap mb-2 list-unstyled bg-white rounded">
-                                <li class="breadcrumb-item ">   <a href="adminpannel.php">Admin Pannel</a>
-                                </li>
+                    <nav class="bg-white py-1 px-2">
+                        <ol class=" d-flex flex-wrap m-0 list-unstyled rounded">
+                            <li class="breadcrumb-item m-0"> <a href="adminpannel.php" class="m-0">Admin Pannel</a>
+                            </li>
 
-                                <li class="breadcrumb-item active">
-                                    <a class="text-decoration-none text-black-50" href="#">My Products</a>
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
+                            <li class="breadcrumb-item active m-0">
+                                <a class="text-decoration-none text-black-50 m-0" href="#">My Products</a>
+                            </li>
+                        </ol>
+                    </nav>
 
                 </div>
 
                 <!--head-->
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row align-items-start justify-content-evenly">
                         <!--sortings-->
-                        <div class="mx-lg-3 mb-3 col-10 offset-1 offset-lg-0 col-lg-2 mb-3 mt-3  rounded bg-body border" style="border: solid purple">
+                        <div class="col-10  col-lg-2 mt-3  rounded bg-white border" style="border: solid purple">
                             <div class="row">
                                 <div class="col-10 mt-3 fs-5">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <label class="form-label fw-bold fs-3 ">Filters</label>
-                                        </div>
-                                        <div class="col-11">
-                                            <div class="row">
+
+                                    <div class="col-12 text-center">
+                                        <label class="form-label fw-bold fs-4 mb-0">Filters</label>
+                                    </div>
+
+                                    <!-- <div class="row">
                                                 <div class="col-10">
                                                     <input type="text" id="s" class=" form-control" placeholder="Search" />
                                                 </div>
                                                 <div class="col-1">
                                                     <label class="form-label fs-4 "><i class="bi bi-search"></i></label>
                                                 </div>
-                                            </div>
+                                            </div> -->
+                                    <div class="input-group align-items-baseline justify-content-center my-3">
+                                        <div class="form-outline w-75">
+                                            <input id="s" type="search" id="form1" class="form-control m-0" />
                                         </div>
-                                        <div class="col-12">
-                                            <label class="form-label fw-bold">Active Time</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <hr width="80%" />
-                                        </div>
-                                        <div class="col-12" style="font-size: 14px;">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="n">
-                                                <label class="form-check-label" for="n">
-                                                    New to Old
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="o">
-                                                <label class="form-check-label" for="o">
-                                                    Old to New
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label fw-bold mt-3">By Quentity</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <hr width="80%" />
-                                        </div>
-                                        <div class="col-12" style="font-size: 14px;">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="l">
-                                                <label class="form-check-label " for="l">
-                                                    Low to Heigh
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input " type="radio" name="flexRadioDefault" id="h">
-                                                <label class="form-check-label " for="h">
-                                                    Heigh to Low
-                                                </label>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-12">
-                                            <label class="form-label fw-bold mt-3">By Condition</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <hr width="80%" />
-                                        </div>
-                                        <div class="col-12 " style="font-size: 14px;">
-                                            <div class="form-check">
-                                                <input class="form-check-input " type="radio" name="flexRadioDefault2" id="u">
-                                                <label class="form-check-label" for="u">
-                                                    Used
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input " type="radio" name="flexRadioDefault2" id="bn">
-                                                <label class="form-check-label " for="bn">
-                                                    Brandnew
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <button class=" col-12 my-3 mx-3 mt-3 d-grid  btn btn-success mb-1" onclick="addfilters();">Search</button>
-                                            <button class="col-12 my-3 mx-3 mt-3 d-grid btn btn-primary" style="background-color: purple;"  onclick="clr();">Clear Filters</button>
-                                        </div>
-
+                                        <button id="search-button" type="button" class="btn btn-primary m-0" onclick="addfilters();">
+                                            <i class="fas fa-search"></i>
+                                        </button>
                                     </div>
+
+
+                                    <label class="form-label fw-bold mb-1 small">Active Time</label>
+
+                                    <div class="col-12">
+                                        <hr width="80%" class="mt-0 mb-2" />
+                                    </div>
+                                    <div class="col-12" style="font-size: 14px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="n">
+                                            <label class="form-check-label" for="n">
+                                                New to Old
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="o">
+                                            <label class="form-check-label" for="o">
+                                                Old to New
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <label class="form-label fw-bold small mt-3">By Quentity</label>
+
+                                    <div class="col-12">
+                                        <hr width="80%" class="mt-0 mb-2" />
+                                    </div>
+                                    <div class="col-12" style="font-size: 14px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="l">
+                                            <label class="form-check-label " for="l">
+                                                Low to Heigh
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="radio" name="flexRadioDefault" id="h">
+                                            <label class="form-check-label " for="h">
+                                                Heigh to Low
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <label class="form-label small fw-bold mt-3">By Condition</label>
+
+                                    <div class="col-12">
+                                        <hr width="80%" class="mt-0 mb-2" />
+                                    </div>
+                                    <div class="col-12 " style="font-size: 14px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="radio" name="flexRadioDefault2" id="u">
+                                            <label class="form-check-label" for="u">
+                                                Used
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="radio" name="flexRadioDefault2" id="bn">
+                                            <label class="form-check-label " for="bn">
+                                                Brandnew
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button class=" col-12 mt-3  btn btn-success mb-1" onclick="addfilters();">Search</button>
+                                        <button class="col-12 my-1 btn btn-primary" style="background-color: purple;" onclick="clr();">Clear Filters</button>
+                                    </div>
+
+
                                 </div>
                             </div>
 
@@ -189,10 +183,10 @@ if (isset($_SESSION["admin"])) {
                         <!--sortings-->
 
                         <!--product-->
-                        <div class="mx-lg-3 mt-3 mb-3 col-10 offset-1 offset-lg-0 col-lg-9   bg-white">
-                            <div class="row">
-                                <div class="offset-1 col-10 text-center">
-                                    <div class="row" id="prodiv">
+                        <div class="col-10 col-lg-9 bg-light">
+                            <div class="row mt-3">
+
+                                    <div class="row align-items-center justify-content-start flex-wrap g-2" id="prodiv">
                                         <?php
 
                                         $pronum = database::s("SELECT * FROM `product` ");
@@ -219,28 +213,19 @@ if (isset($_SESSION["admin"])) {
                                             <?php
 
                                             ?>
-                                            <div class="card mb-3 col-10 col-md-6 mt-3 ">
-                                                <div class="row g-0">
-                                                    <div class="col-md-3 mt-4">
-                                                        <img src="<?php echo $imglink["code"] ?>" class="img-fluid rounded-start">
-                                                    </div>
-                                                    <div class="col-md-9 ">
-
-                                                        <div class="card-body m-1">
-                                                            <h5 class="card-title fw-bold"><?php echo $item["title"] ?></h5>
-                                                            <span class="card-text fw-bol text-primary"><?php echo "Rs " . $item["price"] ?></span><br />
-                                                            <span class="card-text fw-bol text-success"><?php echo $item["qty"] . " Items Left" ?></span>
-                                                            <div class="form-check form-switch mb-3">
+                                            <div class="card mb-2 col-6 col-md-4 col-lg-3 mx-1  ">
+                                            <div class="form-check form-switch mb-0">
                                                                 <?php
                                                                 if ($item["status_id"] == "2") {
                                                                 ?>
+                                                                <label style="font-size: 12px;" class="form-check-label tw-bold" for="<?php echo "flexSwitchCheckDefault" . $p ?>" id="<?php echo "lab" . $p ?>">Make Your Product Active</label>
                                                                     <input checked class="form-check-input" type="checkbox" role="switch" id="<?php echo "flexSwitchCheckDefault" . $p ?>" onchange="changestatus(<?php echo $item['id'] ?>,'<?php echo 'flexSwitchCheckDefault' . $p ?>','<?php echo 'lab' . $p ?>')">
-                                                                    <label style="font-size: 12px;" class="form-check-label tw-bold" for="<?php echo "flexSwitchCheckDefault" . $p ?>" id="<?php echo "lab" . $p ?>">Make Your Product Active</label>
+                                                                    
                                                                 <?php
                                                                 } else {
                                                                 ?>
+                                                                     <label style="font-size: 12px;" class="form-check-label tw-bold" for="<?php echo "flexSwitchCheckDefault" . $p ?>" id="<?php echo "lab" . $p ?>">Make Your Product Deactive</label>
                                                                     <input class="form-check-input" type="checkbox" role="switch" id="<?php echo "flexSwitchCheckDefault" . $p ?>" onchange="changestatus(<?php echo $item['id'] ?>,'<?php echo 'flexSwitchCheckDefault' . $p ?>','<?php echo 'lab' . $p ?>')  ">
-                                                                    <label style="font-size: 12px;" class="form-check-label tw-bold" for="<?php echo "flexSwitchCheckDefault" . $p ?>" id="<?php echo "lab" . $p ?>">Make Your Product Deactive</label>
                                                                 <?php
                                                                 }
 
@@ -248,7 +233,19 @@ if (isset($_SESSION["admin"])) {
 
 
                                                             </div>
-                                                            <div class="col-12">
+                                                <div class="row justify-content-around m-0">
+                                                    <div class="col-md-4 mt-4 aspect-ratio-square">
+                                                        <img src="<?php echo $imglink["code"] ?>" class="w-100 h-100 object-fit-cover">
+                                                    </div>
+                                                    <div class="col-md-7 text-left p-0">
+                                                        <div class="card-body m-0 p-0">
+                                                            <h6 class="card-title mb-1"><?php echo $item["title"] ?></h6>
+                                                            <span class="card-text text-primary small"><?php echo "Rs " . $item["price"] ?></span><br />
+                                                            <span class="card-text text-success"><?php echo $item["qty"] . " Items Left" ?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 m-0">
                                                                 <div class="row">
                                                                     <div class="col-12 col-lg-12 ">
                                                                         <a href="updateproduct.php?id=<?php echo $item["id"] ?>" class="btn btn-success d-grid" style="font-size: 12px;">Update Product</a>
@@ -260,10 +257,6 @@ if (isset($_SESSION["admin"])) {
                                                                     </div> -->
                                                                 </div>
                                                             </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
 
                                         <?php
@@ -279,7 +272,7 @@ if (isset($_SESSION["admin"])) {
 
 
                                     </div>
-                                </div>
+                                
                             </div>
 
                         </div>
