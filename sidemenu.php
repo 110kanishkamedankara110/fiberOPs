@@ -10,14 +10,14 @@
                                 </div>
                                 <div class="nav flex-column nav-pills me-3 mt-3" role="tablist" aria-orientation="vertical">
                                     <nav class="nav flex-column text-left">
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6" aria-current="page" href="adminpannel.php">Dashboard</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6" href="manageusers.php">Manage Users</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6" href="manageproduct.php">Manage Products</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6"  href="sellerproductview.php">Products</a>
-                                        <a style="font-family: 'Quicksand';" class="nav-link fs-6"  href="myselling.php">Sold</a>
+                                        <a  class="nav-link fs-6" aria-current="page" href="adminpannel.php">Dashboard</a>
+                                        <a  class="nav-link fs-6" href="manageusers.php">Manage Users</a>
+                                        <a  class="nav-link fs-6" href="manageproduct.php">Manage Products</a>
+                                        <a  class="nav-link fs-6"  href="sellerproductview.php">Products</a>
+                                        <a  class="nav-link fs-6"  href="myselling.php">Sold</a>
 
                                  
-                                        <p style="font-family: 'Quicksand';" style="cursor: pointer !important;"  onclick="gotoaddproduct();" class="nav-link fs-6" href="">Add Products</p>
+                                        <p  style="cursor: pointer !important;"  onclick="gotoaddproduct();" class="nav-link fs-6" href="">Add Products</p>
                                         
                                       
                                     </nav>

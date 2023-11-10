@@ -6,7 +6,7 @@ if (isset($_SESSION["admin"])) {
     <html>
 
     <head>
-    <title>FIBEROPTICSLK | AddProducts</title>
+        <title>FIBEROPTICSLK | AddProducts</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="icon" href="recourses\logo.svg" />
@@ -15,28 +15,23 @@ if (isset($_SESSION["admin"])) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
 
-    <body>
+    <body class="bg-light">
         <?php
         require "loading.php";
         ?>
         <div class="container-fluid">
             <div class="row">
-
+                <h3 class="h3 text-center my-3" style="color: purple;">Product Listing</h3>
                 <!--addproduct-->
-                <div id="addproductbox">
+                <div id="addproductbox" class="px-5">
                     <!--heading-->
-                    <div class="col-12 mb-3">
-                        <h3 class="h2 text-center" style="color: purple;">Product Listing</h3>
-                    </div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"> <a href="adminpannel.php">Admin Panel</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Product Listiong</li>
+                        </ol>
+                    </nav>
 
-                    <div class="col-12" style="background-color: #E3E5E4;">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">   <a href="adminpannel.php">Admin Pannel</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Product Listiong</li>
-                            </ol>
-                        </nav>
-                    </div>
                     <!--heading-->
 
                     <!--category,brand,model-->
@@ -46,7 +41,7 @@ if (isset($_SESSION["admin"])) {
                             <div class="col-12 col-lg-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="form-label lbl1">Select Product Catagory</label>
+                                        <label class="form-label">Select Product Catagory</label>
                                     </div>
                                     <div class="col-12 mb-3">
 
@@ -75,7 +70,7 @@ if (isset($_SESSION["admin"])) {
                             <div class="col-12 col-lg-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="form-label lbl1">Select Product Brand</label>
+                                        <label class="form-label ">Select Product Brand</label>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <select class="form-select" id="br">
@@ -102,7 +97,7 @@ if (isset($_SESSION["admin"])) {
                             <div class="col-12 col-lg-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="form-label lbl1">Select Product Model</label>
+                                        <label class="form-label ">Select Product Model</label>
                                     </div>
                                     <div class="col-12 mb-3">
 
@@ -139,16 +134,18 @@ if (isset($_SESSION["admin"])) {
                     <hr class="hrbreak1" />
 
                     <!--title-->
-                    <div class="col-12">
+                    <div class="col-lg-12">
                         <div class="row">
                             <div class="col-12 ">
-                                <lable class="form-label lbl1">Add a Title To Your Product</lable>
+                                <label class="form-label">Add a Title To Your Product</label>
                             </div>
-                            <div class="col-12 col-lg-8 offset-lg-2">
-                                <input type="text" class="form-control mb-3" id="ti" />
+                            <div class="col-12">
+                                <input type="text" class="form-control " id="ti" />
                             </div>
                         </div>
                     </div>
+
+
 
                     <!--title-->
 
@@ -160,61 +157,67 @@ if (isset($_SESSION["admin"])) {
                             <div class="col-12 col-lg-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <lable class="form-label lbl1">Select Product Condition</lable>
+                                        <label class="form-label ">Select Product Condition</label>
                                     </div>
-                                    <select class="form-select" style="width: 80%;margin-left: 5%;" id="con">
-                                    <?php
+                                    <div class="col-12">
+                                        <select class="form-select mb-2" id="con">
+                                            <?php
 
-                                    $resmodel = database::s("SELECT * FROM `condition`");
-                                    $nm = $resmodel->num_rows;
-                                    for ($z = 0; $z < $nm; $z++) {
-                                        $resm = $resmodel->fetch_assoc();
-                                    ?>
-                                       <option value="<?=$resm["id"]?>"><?=$resm["condition"]?></option>
+                                            $resmodel = database::s("SELECT * FROM `condition`");
+                                            $nm = $resmodel->num_rows;
+                                            for ($z = 0; $z < $nm; $z++) {
+                                                $resm = $resmodel->fetch_assoc();
+                                            ?>
+                                                <option value="<?= $resm["id"] ?>"><?= $resm["condition"] ?></option>
 
 
-                                    <?php
-                                    }
-                                    ?>
-                                    </select>
-                              
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+
                                 </div>
                             </div>
                             <div class="col-12 col-lg-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <lable class="form-label lbl1">Select Product Color</lable>
+                                        <label class="form-label ">Select Product Color</label>
                                     </div>
-                                    <div class="col-12 mb-3">
-                                        <div class="row">
-
-                                        <select class="form-select" style="width: 80%;margin-left: 5%;" id="col">
-                                    <?php
-
-                                    $resmodel = database::s("SELECT * FROM `color`");
-                                    $nm = $resmodel->num_rows;
-                                    for ($z = 0; $z < $nm; $z++) {
-                                        $resm = $resmodel->fetch_assoc();
-                                    ?>
-                                       <option value="<?=$resm["id"]?>"><?=$resm["name"]?></option>
+                                    <div class="col-12">
 
 
-                                    <?php
-                                    }
-                                    ?>
-                                    </select>
-                              
-                                           
+                                        <select class="form-select" id="col">
+                                            <?php
 
-                                        </div>
+                                            $resmodel = database::s("SELECT * FROM `color`");
+                                            $nm = $resmodel->num_rows;
+                                            for ($z = 0; $z < $nm; $z++) {
+                                                $resm = $resmodel->fetch_assoc();
+                                            ?>
+                                                <option value="<?= $resm["id"] ?>"><?= $resm["name"] ?></option>
+
+
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+
+
+
+
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-4 mb-3">
+                            <div class="col-12 col-lg-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <lable class="form-label lbl1">Add Product Quantity</lable>
+                                        <label class="form-label ">Add Product Quantity</label>
+
+                                    </div>
+                                    <div class="col-12">
                                         <input type="number" class="form-control" value="0" min="0" id="qty">
                                     </div>
                                 </div>
@@ -231,7 +234,7 @@ if (isset($_SESSION["admin"])) {
                             <div class="col-12 col-lg-6">
                                 <div class="row">
                                     <div class="col-12">
-                                        <lable class="form-label lbl1">Cost Per Item</lable>
+                                        <label class="form-label ">Cost Per Item</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs.</span>
                                             <input type="text" class="form-control" id="cost" aria-label="Amount (to the nearest rupee)">
@@ -243,7 +246,7 @@ if (isset($_SESSION["admin"])) {
                             <div class="col-12 col-lg-6">
                                 <div class="row">
                                     <div class="col-12">
-                                        <lable class="form-label lbl1">Approved Payment Method</lable>
+                                        <lable class="form-label ">Approved Payment Method</lable>
 
                                     </div>
                                     <div class="col-12">
@@ -264,10 +267,10 @@ if (isset($_SESSION["admin"])) {
                     <div class="col-12 col-lg-6 mb-3">
                         <div class="row">
                             <div class="col-12">
-                                <lable class="form-label lbl1">Delivery Cost</lable>
+                                <label class="form-label ">Delivery Cost</label>
                             </div>
                             <div class="col-12 offset-lg-1 col-lg-3">
-                                <lable class="form-lablle">Delivery Cost Within Colombo</lable>
+                                <label class="form-label my-1">Delivery Cost Within Colombo</label>
                             </div>
                             <div class="col-12 col-lg-7">
                                 <div class="input-group mb-3">
@@ -281,10 +284,10 @@ if (isset($_SESSION["admin"])) {
                     <div class="col-12 col-lg-6 mb-3">
                         <div class="row">
                             <div class="col-12">
-                                <lable class="form-label lbl1"></lable>
+                                <label class="form-label "></label>
                             </div>
                             <div class="col-12 offset-lg-1 col-lg-3 mt-lg-4">
-                                <lable class="form-lablle">Delivery Cost Out Of Colombo</lable>
+                                <label class="form-lablle">Delivery Cost Out Of Colombo</label>
                             </div>
                             <div class="col-12 col-lg-7 mt-lg-4">
                                 <div class="input-group mb-3">
@@ -305,10 +308,10 @@ if (isset($_SESSION["admin"])) {
                     <div class="col-12 mb-3">
                         <div class="row">
                             <div class="col-12">
-                                <lable class="form-label lbl1">Product Description</lable>
+                                <label class="form-label ">Product Description</label>
                             </div>
                             <div class="col-12">
-                                <textarea id="des" class="form-control" style="background-color: whitesmoke;"></textarea>
+                                <textarea id="des" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -317,17 +320,17 @@ if (isset($_SESSION["admin"])) {
                     <!--product image-->
                     <div class="col-12 mb-3">
                         <div class="row">
-                            <div class="col-12">
-                                <lable class="form-label lbl1">Add Product Image</lable>
+                            <div class="col-12 text-center">
+                                <label class="form-label ">Add Product Image</label>
                             </div>
-                            <div id="iii">
-                                <img class="productimg col-4 col-lg-2 ms-2" id="prev" src="recourses\add product page resources\addproductimg.svg" />
-                            </div>
+                            <label id="iii" class=" text-center col-lg-12" for="imguploader">
+                                <img class="productimg " id="prev" src="recourses\add product page resources\addproductimg.svg" />
+                            </label>
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-12 ms-2 mt-2 col-lg-6" id="imd">
+                                    <div class="col-12 mx-auto text-center col-lg-6" id="imd">
                                         <input multiple type="file" accept="image/*" class="d-none" id="imguploader" enctype="multipart/form-data" />
-                                        <label for="imguploader" class="btn btn-primary col-6 col-lg-8" onclick="changeimage();">Upload</label>
+                                        <label for="imguploader" class="btn btn-primary" onclick="changeimage();">Upload</label>
                                     </div>
                                     <!-- <div class="col-6 col-lg-4 d-grid mt-2 mt-lg-0">
                                 <button class="btn btn-primary">Upload</button>
@@ -356,10 +359,7 @@ if (isset($_SESSION["admin"])) {
                     <!--save button-->
 
 
-                    <!--footer-->
-                    <?php
-                    require "footer.php";
-                    ?>
+
                 </div>
                 <!--addproduct-->
 
@@ -370,6 +370,10 @@ if (isset($_SESSION["admin"])) {
             </div>
         </div>
 
+        <!--footer-->
+        <?php
+        require "footer.php";
+        ?>
         <script src="script.js"></script>
         <script src="bootstrap.bundle.js"></script>
 
