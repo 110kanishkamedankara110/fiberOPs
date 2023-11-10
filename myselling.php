@@ -34,34 +34,23 @@ if (isset($_SESSION["admin"])) {
 
     </head>
 
-    <body>
+    <body class="bg-light">
         <?php
         require "loading.php";
         ?>
         <div class="container-fluid">
             <div class="row">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb ">
+                        <li class="breadcrumb-item"> <a href="adminpannel.php">Admin Panel</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sellings</li>
+                    </ol>
+                </nav>
 
-
-
-
-
-                <div class="col-12" style="background-color: #E3E5E4;">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"> <a href="adminpannel.php">Admin Pannel</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Sellings</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-12 border border-1 border-secondary rounded mb-3">
-                    <div class="row">
-                        <div class="col-12">
-                            <label class="form-label fs-1 fw-bolder">Sellings</label>
-                        </div>
-                       
-                        <div class="col-12">
-                            <hr class="hr1">
-                        </div>
+                <div class="col-12 bg-light">
+                    <div class="row align-items-start">
+                        <label class="form-label fs-4">Sellings</label>
+                        <hr>
 
                         <?php
 
@@ -73,17 +62,17 @@ if (isset($_SESSION["admin"])) {
                                     <div class="col-12 text-center">
                                         <label class="form-label fs-1 fw-bolder">You Have no Sold Items.</label>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         <?php
                         } else {
                         ?>
-                            <div class="col-11 col-lg-9" id="show">
+                            <div class="col-11 col-lg-9 px-lg-5 px-md-1" id="show">
                                 <div class="row">
                                     <?php
                                     for ($i = 0; $i < $cpronr; $i++) {
-                                        
+
                                         $pro = $cart->fetch_assoc();
                                         $products = database::s("SELECT `product`.`id`,`invoice`.`id` 
                                         AS `inv_id`,`product`.`category_id`,`category`.`name` 
@@ -111,27 +100,23 @@ if (isset($_SESSION["admin"])) {
                                             $shipping = $wlpro["delivery_fee_other"];
                                         }
                                         $totprice = $totprice + $wlpro["total"];
-                                        $cq="SELECT `city`.`name` AS `city`,`district`.`name` 
+                                        $cq = "SELECT `city`.`name` AS `city`,`district`.`name` 
                                         AS `destrict`,`province`.`name` AS `province`,`postalcode` FROM `location` 
                                         INNER JOIN `city` ON `city`.`id`=`location`.`city_id` 
                                         INNER JOIN `district` ON `district`.`id`=`location`.`district_id` 
-                                        INNER JOIN `province` ON `province`.`id`=`location`.`province_id` WHERE `location`.`id`='".$uadres["location_id"]."'";
-                                        $locres=database::s($cq)->fetch_assoc();
+                                        INNER JOIN `province` ON `province`.`id`=`location`.`province_id` WHERE `location`.`id`='" . $uadres["location_id"] . "'";
+                                        $locres = database::s($cq)->fetch_assoc();
                                     ?>
 
-                                        <div class="card mb-3  col-12">
-                                            <div class=" row g-0">
-                                                <div class="col-md-12 mt-3 mb-3">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <span class="fw-bold text-black-50 fs-5">Buyer : </span>
-                                                            <span class=" fs-5"><?php echo $wlpro["first_name"] . " " . $wlpro["last_name"] ?> </span>
-                                                            <hr />
-                                                        </div>
-                                                    </div>
+                                        <div class="card mb-3 col-12 py-3 shadow shadow-sm">
+                                            <div class=" row g-0 align-items-center">
+                                                <div class="col-md-12 mt-1 mb-0">
+                                                    <span class="fw-bold text-black-50 small mb-0">Buyer : </span>
+                                                    <span class="small mb-0"><?php echo $wlpro["first_name"] . " " . $wlpro["last_name"] ?> </span>
+                                                    <hr class="my-1" />
                                                 </div>
-                                                <div class="col-md-4 " onmouseover="pop(<?php echo $pro['inid']; ?>)" onmouseout="pop2(<?php echo $pro['inid']; ?>)">
-                                                    <div class="pa col-lg-6 col-12">
+                                                <div class="col-md-2 position-relative" onmouseover="pop(<?php echo $pro['inid']; ?>)" onmouseout="pop2(<?php echo $pro['inid']; ?>)">
+                                                    <div class="pa col-12">
                                                         <div class="tol rounded col-12 p-2 d-none" id="pop<?php echo $pro["inid"]; ?>">
                                                             <h3 class="text-white"><?php echo $pro["uemail"] ?></h3>
                                                             <span class="text-white">Address: <?php echo $uadres["line1"] . " " . $uadres["line2"] ?></span><br />
@@ -147,60 +132,63 @@ if (isset($_SESSION["admin"])) {
 
                                                         </div>
                                                     </div>
-                                                    <img src="<?php echo $imgpath["code"] ?>" class="img-fluid rounded-start" />
+                                                    <img src="<?php echo $imgpath["code"] ?>" class="w-100 h-100 object-fit-cover" />
                                                 </div>
 
-                                                <div class="col-md-5">
+                                                <div class="col-md-5 py-0">
                                                     <div class="card-body">
-                                                        <h3 class="card-title"><?php echo $wlpro["title"] ?></h3>
+                                                        <h3 class="card-title mb-0"><?php echo $wlpro["title"] ?></h3>
                                                         <span class="fw-bold text-black-50 " style="font-size: 12px;">Colour : <?php echo $wlpro["color"] ?> </span>&nbsp;
                                                         &nbsp; <span class="fw-bold text-black-50 " style="font-size: 12px;">Condition : <?php echo $wlpro["condition"] ?></span>
                                                         <br />
-                                                        <span class="fw-bold text-black-50 fs-5">Price :</span> &nbsp;
-                                                        &nbsp; <span class="fw-bold text-black">Rs. <?php echo $wlpro["price"] ?></span>
+                                                        <span class=" text-black-50 small">Price :</span> &nbsp;
+                                                        &nbsp; <span class="text-black small">Rs. <?php echo $wlpro["price"] ?></span>
                                                         <br />
-                                                        <span class="fw-bold text-black-50 fs-5">Order Status :</span> &nbsp; <br />
+                                                        <span class="fw-bold text-black-50 small">Order Status :</span>
 
 
                                                         <?php
-                                                         $q = "SELECT * FROM `order_status` WHERE `invoice_id`='" . $wlpro["inv_id"] . "' ORDER BY `time` DESC";
-                                                         $resst = database::s($q);
-                                                         $numst = $resst->num_rows;
-                                                         if ($numst != 0) {
- 
-                                                             for ($j = 0; $j < $numst; $j++) {
-                                                                 $rowstat = $resst->fetch_assoc();
-                                                         ?>
-                                                                 &nbsp; <span class="fw-bold text-black"><?= $rowstat["status"] ?></span> &nbsp; &nbsp; &nbsp;
-                                                                 <span class="fw-bold text-black"><?= $rowstat["time"] ?><span class="btn btn-danger" onclick="statusDelete('<?=$rowstat['id']?>')">Delete</span>
-                                                                     <br />
-                                                                 <?php
-                                                             }
-                                                         } else {
-                                                                 ?>
-                                                                 &nbsp; <span class="fw-bold text-black">Processing</span>
-                                                             <?php
-                                                         }
+                                                        $q = "SELECT * FROM `order_status` WHERE `invoice_id`='" . $wlpro["inv_id"] . "' ORDER BY `time` DESC";
+                                                        $resst = database::s($q);
+                                                        $numst = $resst->num_rows;
+                                                        if ($numst != 0) {
+
+                                                            for ($j = 0; $j < $numst; $j++) {
+                                                                $rowstat = $resst->fetch_assoc();
                                                         ?>
-                                                        
-                                                            <div class="col-12 ms-2 mt-2 col-lg-6" id="imd">
-                                                                <input placeholder="Order Status" type="text" value="" class="form-control" id="stat<?=$wlpro['inv_id']?>" />
-                                                                <br>
-                                                                <button class="btn btn-primary" onclick="addOrderStatus('<?= $wlpro['inv_id'] ?>');">Add Order Status</button>
+                                                                &nbsp;<br /> <span class="fw-bold text-black my-0"><?= $rowstat["status"] ?></span> &nbsp; &nbsp; &nbsp;
+                                                                <span class="fw-bold text-black my-0"><?= $rowstat["time"] ?><span class="btn btn-danger my-0 btn-sm" onclick="statusDelete('<?= $rowstat['id'] ?>')">Delete</span>
+                                                                    <br />
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                                ?>
+                                                                &nbsp; <span class="small text-black">Processing</span>
+                                                            <?php
+                                                        }
+                                                            ?>
+
+                                                            <div class="col-12 col-lg-12 position-relative" id="imd">
+                                                                <input placeholder="Order Status" type="text" value="" class="form-control mb-0" id="stat<?= $wlpro['inv_id'] ?>" />
+
+                                                                <button class="btn btn-primary btn-sm my-0 position-absolute end-0 top-0 mt-1" onclick="addOrderStatus('<?= $wlpro['inv_id'] ?>');">Add</button>
                                                             </div>
-                                                            <br />
-                                                            <span class="fw-bold text-black-50 fs-5">Quentity : </span>
-                                                            <input disabled id="qty<?php echo $wlpro['id'] ?>" type="text" value="<?php echo $pro["invqty"] ?>" class="rounded mt-3 border border-2 border-secondary fs-4 fw-bold px-3 cartqty" />
-                                                            <br />
-                                                            <span class="fw-bold text-black-50 fs-5">Delivery Fee :</span> &nbsp;
-                                                            &nbsp; <span class="fw-bold text-black">Rs.<?php echo $shipping; ?></span>
+
+                                                            <div class="input-group input-group-sm my-3">
+                                                                <span class="input-group-text" id="inputGroup-sizing-sm">Quentity : </span>
+                                                                <input disabled type="text" id="qty<?php echo $wlpro['id'] ?>" class="form-control" value="<?php echo $pro["invqty"] ?>" >
+                                                            </div>
+                                                            <!-- <input disabled  type="text"  class="rounded mt-3 input input-sm  fs-4 small px-3 cartqty" /> -->
+
+                                                            <span class=" text-black-50 small">Delivery Fee :</span> &nbsp;
+                                                            &nbsp; <span class="small text-black">Rs.<?php echo $shipping; ?></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mt-4">
-                                              
+
                                                 </div>
-                                                <hr />
-                                                <div class="col-md-12 mt-3 mb-3">
+                                                <hr class="my-1" />
+                                                <div class="col-md-12 ">
                                                     <div class="row">
                                                         <div class="col-6 col-md-6">
 
@@ -240,27 +228,28 @@ if (isset($_SESSION["admin"])) {
 
 
 
-                        <div class="col-12 col-lg-3" id="sum">
+                        <div class="col-12 col-lg-3 bg-white px-3 py-5 shadow shadow-sm" id="sum">
                             <div class="row">
-                                <div class=" col-12">
-                                    <label class="form-label fs-3 fw-bold">
-                                        Summary
-                                    </label>
-                                    <div class="col-12">
-                                        <hr />
-                                    </div>
+                                <label class="form-label fs-4 ">
+                                    Summary
+                                </label>
+                                <hr />
 
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <span class="fs-6 fw-bold"> Items (<?php echo $cpronr ?>) </span>
-                                            </div>
-                                            <!-- <div class="col-6 text-end">
+
+                                <div class="row ">
+                                    <div class="col-6 text-left">
+                                        <span class="fs-6 fw-bold"> Items : </span>
+                                    </div>
+                                    <!-- <div class="col-6 text-end">
                                                 <span class="fs-6 fw-bold ">Rs. <?php echo $totprice ?> </span>
                                             </div> -->
-                                        </div>
+                                    <div class="col-6 text-right">
+                                        <span class="fs-6 fw-bold"> <?php echo $cpronr ?></span>
                                     </div>
-                                    <!-- <div class="col-12">
+
+                                </div>
+
+                                <!-- <div class="col-12">
                                         <div class="row">
                                             <div class="col-6">
                                                 <span class="fs-6 fw-bold"> Shipping </span>
@@ -271,47 +260,47 @@ if (isset($_SESSION["admin"])) {
                                         </div>
                                     </div>
                                     <hr /> -->
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <span class="fs-4 fw-bold"> Total Sales</span>
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <span class="fs-4 fw-bold ">Rs.<?php echo $totprice ?> </span>
-                                            </div>
-                                        </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="fs-6 fw-bold"> Total Sales</span>
                                     </div>
-                                    <!-- <div class="col-12 mt-3 d-grid mb-3">
+                                    <div class="col-6 text-end">
+                                        <span class="fs-6 fw-bold ">Rs.<?php echo $totprice ?> </span>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-12 mt-3 d-grid mb-3">
                                         <button class="btn btn-primary fs-5 fw-bold" onclick="checkout();" style="background-color: purple;border:white">CHECKOUT</button>
                                     </div> -->
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <?php
-                require "footer.php"
-                ?>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <?php
+            require "footer.php"
+            ?>
+        </div>
         </div>
 
 

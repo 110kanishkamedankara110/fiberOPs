@@ -27,14 +27,14 @@ if (isset($_SESSION["admin"])) {
     </head>
 
     <body class="bgbg">
-    <?php
+        <?php
         require "loading.php";
         ?>
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-12 bg-light text-center rounded ">
-                    <label for="" class="form-label fs-2 fw-bold text-primary">Product Selling History</label>
+                <div class="col-12 bg-light text-center rounded py-3">
+                    <label for="" class="form-label fs-5 text-primary">Product Selling History</label>
                 </div>
                 <nav>
                     <ol class=" d-flex flex-wrap mb-1 mt-1 list-unstyled bg-white rounded">
@@ -48,6 +48,17 @@ if (isset($_SESSION["admin"])) {
                     </ol>
                 </nav>
                 <div class="col-12 mt-3 mb-2 d-none d-lg-block">
+                <table class=" table table-striped table-hover">
+                    <thead >
+                        <th>Order Id</th>
+                        <th>Product</th>
+                        <th>Buyer</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </thead>
+                    <tbody>
+                        <!-- <div class="col-12 mt-3 mb-2 d-none d-lg-block">
+
                     <div class="row">
 
                         <div class="col-4 col-lg-2 bg-primary pt-2 pb-2 text-end">
@@ -72,169 +83,197 @@ if (isset($_SESSION["admin"])) {
 
 
                     </div>
+                </div> -->
+
+                        <?php
+                        if (!empty($from) && empty($to)) {
+                            $fromrs = database::s("SELECT * FROM `invoice`");
+                            $fn = $fromrs->num_rows;
+                            for ($i = 0; $i < $fn; $i++) {
+                                $fr = $fromrs->fetch_assoc();
+                                $fromdate = $fr["date"];
+
+                                $splitdate = explode(" ", $fromdate);
+                                $date = $splitdate[0];
+
+                                if ($from == $date) {
+                                    $porrs = database::s("SELECT * FROM `product` WHERE `id`='" . $fr["product_id"] . "'; ");
+                                    $pro = $porrs->fetch_assoc();
+                                    $userrs = database::s("SELECT * FROM `user` WHERE `email`='" . $fr["user_email"] . "'; ");
+                                    $user = $userrs->fetch_assoc();
+
+
+                        ?>
+                                    <!-- <div class="col-12 mb-2">
+
+                                <div class="row">
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 text-end">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["order_id"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-light p-2 d-lg-block">
+                                        <span class="fs-5 fw-bold"><?php echo $pro["title"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-primary d-none d-lg-block pt-2 pb-2">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $user["first_name"]  . " " . $user["last_name"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-light pt-2 pb-2 d-none d-lg-block">
+                                        <span class="fs-5 fw-bold"><?php echo $pro["price"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 d-lg-block">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["qty"] ?></span>
+                                    </div>
+
+                                </div>
+                            </div> -->
+                                    <tr>
+                                        <td><?php echo $fr["order_id"] ?></td>
+                                        <td><?php echo $pro["title"] ?></td>
+                                        <td><?php echo $user["first_name"]  . " " . $user["last_name"] ?></td>
+                                        <td><?php echo $pro["price"] ?></td>
+                                        <td><?php echo $fr["qty"] ?></td>
+                                        <td></td>
+                                    </tr>
+
+
+
+
+                                <?php
+                                }
+                            }
+                        } else if (!empty($from) && !empty($to)) {
+                            $fromrs = database::s("SELECT * FROM `invoice`");
+                            $fn = $fromrs->num_rows;
+                            for ($i = 0; $i < $fn; $i++) {
+                                $fr = $fromrs->fetch_assoc();
+                                $fromdate = $fr["date"];
+
+                                $splitdate = explode(" ", $fromdate);
+                                $date = $splitdate[0];
+
+                                if ($from <= $date && $to >= $date) {
+                                    $porrs = database::s("SELECT * FROM `product` WHERE `id`='" . $fr["product_id"] . "'; ");
+                                    $pro = $porrs->fetch_assoc();
+                                    $userrs = database::s("SELECT * FROM `user` WHERE `email`='" . $fr["user_email"] . "'; ");
+                                    $user = $userrs->fetch_assoc();
+
+
+                                ?>
+                                    <tr>
+                                        <td><?php echo $fr["order_id"] ?></td>
+                                        <td><?php echo $pro["title"] ?></td>
+                                        <td><?php echo $user["first_name"]  . " " . $user["last_name"] ?></td>
+                                        <td><?php echo $pro["price"] ?></td>
+                                        <td><?php echo $fr["qty"] ?></td>
+                                        <td></td>
+                                    </tr>
+                                    <!-- <div class="col-12 mb-2">
+
+                                <div class="row">
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 text-end">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["order_id"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-light p-2 d-lg-block">
+                                        <span class="fs-5 fw-bold"><?php echo $pro["title"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-primary d-none d-lg-block pt-2 pb-2">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $user["first_name"]  . " " . $user["last_name"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-light pt-2 pb-2 d-none d-lg-block">
+                                        <span class="fs-5 fw-bold"><?php echo $pro["price"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 d-lg-block">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["qty"] ?></span>
+                                    </div>
+
+                                </div>
+                            </div> -->
+
+
+
+
+                                <?php
+                                }
+                            }
+                        } else if (empty($from) && empty($to)) {
+                            $fromrs = database::s("SELECT * FROM `invoice`");
+                            $fn = $fromrs->num_rows;
+                            $date = new DateTime();
+                            $tz = new DateTimeZone("Asia/Colombo");
+                            $date->setTimezone($tz);
+                            $today = $date->format("Y-m-d");
+                            for ($i = 0; $i < $fn; $i++) {
+                                $fr = $fromrs->fetch_assoc();
+                                $fromdate = $fr["date"];
+
+                                $splitdate = explode(" ", $fromdate);
+                                $date = $splitdate[0];
+
+                                if ($today == $date) {
+                                    $porrs = database::s("SELECT * FROM `product` WHERE `id`='" . $fr["product_id"] . "'; ");
+                                    $pro = $porrs->fetch_assoc();
+                                    $userrs = database::s("SELECT * FROM `user` WHERE `email`='" . $fr["user_email"] . "'; ");
+                                    $user = $userrs->fetch_assoc();
+
+
+                                ?>
+                                    <!-- <div class="col-12 mb-2">
+
+                                <div class="row">
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 text-end">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["order_id"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-light p-2 d-lg-block">
+                                        <span class="fs-5 fw-bold"><?php echo $pro["title"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-primary d-none d-lg-block pt-2 pb-2">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $user["first_name"]  . " " . $user["last_name"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-light pt-2 pb-2 d-none d-lg-block">
+                                        <span class="fs-5 fw-bold"><?php echo $pro["price"] ?></span>
+                                    </div>
+
+                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 d-lg-block">
+                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["qty"] ?></span>
+                                    </div>
+
+                                </div>
+                            </div> -->
+                                    <tr>
+                                        <td><?php echo $fr["order_id"] ?></td>
+                                        <td><?php echo $pro["title"] ?></td>
+                                        <td><?php echo $user["first_name"]  . " " . $user["last_name"] ?></td>
+                                        <td><?php echo $pro["price"] ?></td>
+                                        <td><?php echo $fr["qty"] ?></td>
+                                        <td></td>
+                                    </tr>
+
+
+
+
+                        <?php
+                                }
+                            }
+                        }
+
+
+                        ?>
+                    </tbody>
+                </table>
                 </div>
-                <?php
-                if (!empty($from) && empty($to)) {
-                    $fromrs = database::s("SELECT * FROM `invoice`");
-                    $fn = $fromrs->num_rows;
-                    for ($i = 0; $i < $fn; $i++) {
-                        $fr = $fromrs->fetch_assoc();
-                        $fromdate = $fr["date"];
-
-                        $splitdate = explode(" ", $fromdate);
-                        $date = $splitdate[0];
-
-                        if ($from == $date) {
-                            $porrs = database::s("SELECT * FROM `product` WHERE `id`='" . $fr["product_id"] . "'; ");
-                            $pro = $porrs->fetch_assoc();
-                            $userrs = database::s("SELECT * FROM `user` WHERE `email`='" . $fr["user_email"] . "'; ");
-                            $user = $userrs->fetch_assoc();
-
-
-                ?>
-                            <div class="col-12 mb-2">
-
-                                <div class="row">
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 text-end">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["order_id"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-light p-2 d-lg-block">
-                                        <span class="fs-5 fw-bold"><?php echo $pro["title"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-primary d-none d-lg-block pt-2 pb-2">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $user["first_name"]  . " " . $user["last_name"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-light pt-2 pb-2 d-none d-lg-block">
-                                        <span class="fs-5 fw-bold"><?php echo $pro["price"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 d-lg-block">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["qty"] ?></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-                        <?php
-                        }
-                    }
-                } else if (!empty($from) && !empty($to)) {
-                    $fromrs = database::s("SELECT * FROM `invoice`");
-                    $fn = $fromrs->num_rows;
-                    for ($i = 0; $i < $fn; $i++) {
-                        $fr = $fromrs->fetch_assoc();
-                        $fromdate = $fr["date"];
-
-                        $splitdate = explode(" ", $fromdate);
-                        $date = $splitdate[0];
-
-                        if ($from <= $date && $to >= $date) {
-                            $porrs = database::s("SELECT * FROM `product` WHERE `id`='" . $fr["product_id"] . "'; ");
-                            $pro = $porrs->fetch_assoc();
-                            $userrs = database::s("SELECT * FROM `user` WHERE `email`='" . $fr["user_email"] . "'; ");
-                            $user = $userrs->fetch_assoc();
-
-
-                        ?>
-                            <div class="col-12 mb-2">
-
-                                <div class="row">
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 text-end">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["order_id"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-light p-2 d-lg-block">
-                                        <span class="fs-5 fw-bold"><?php echo $pro["title"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-primary d-none d-lg-block pt-2 pb-2">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $user["first_name"]  . " " . $user["last_name"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-light pt-2 pb-2 d-none d-lg-block">
-                                        <span class="fs-5 fw-bold"><?php echo $pro["price"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 d-lg-block">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["qty"] ?></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-                        <?php
-                        }
-                    }
-                } else if (empty($from) && empty($to)) {
-                    $fromrs = database::s("SELECT * FROM `invoice`");
-                    $fn = $fromrs->num_rows;
-                    $date = new DateTime();
-                    $tz = new DateTimeZone("Asia/Colombo");
-                    $date->setTimezone($tz);
-                    $today = $date->format("Y-m-d");
-                    for ($i = 0; $i < $fn; $i++) {
-                        $fr = $fromrs->fetch_assoc();
-                        $fromdate = $fr["date"];
-
-                        $splitdate = explode(" ", $fromdate);
-                        $date = $splitdate[0];
-
-                        if ($today == $date) {
-                            $porrs = database::s("SELECT * FROM `product` WHERE `id`='" . $fr["product_id"] . "'; ");
-                            $pro = $porrs->fetch_assoc();
-                            $userrs = database::s("SELECT * FROM `user` WHERE `email`='" . $fr["user_email"] . "'; ");
-                            $user = $userrs->fetch_assoc();
-
-
-                        ?>
-                            <div class="col-12 mb-2">
-
-                                <div class="row">
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 text-end">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["order_id"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-light p-2 d-lg-block">
-                                        <span class="fs-5 fw-bold"><?php echo $pro["title"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-3 bg-primary d-none d-lg-block pt-2 pb-2">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $user["first_name"]  . " " . $user["last_name"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-light pt-2 pb-2 d-none d-lg-block">
-                                        <span class="fs-5 fw-bold"><?php echo $pro["price"] ?></span>
-                                    </div>
-
-                                    <div class="col-8 offset-2 offset-lg-0 col-lg-2 bg-primary pt-2 pb-2 d-lg-block">
-                                        <span class="fs-5 fw-bold text-white"><?php echo $fr["qty"] ?></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-                <?php
-                        }
-                    }
-                }
-
-
-                ?>
 
                 <div class="col-12 justify-content-center d-flex mt-3 mb-3">
                     <!-- <div class="pagination">
