@@ -645,8 +645,11 @@ html {
 
 .pages {
     margin-left: 20px;
+  
 }
-
+.aspect-ratio-square{
+    aspect-ratio: 1/1 !important;
+}
 .pages__list {
     list-style-type: none;
 }

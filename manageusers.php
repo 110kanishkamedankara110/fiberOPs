@@ -36,13 +36,13 @@ if (isset($_SESSION["admin"])) {
                 ?>
                 <div class="col-12 col-md-9">
                     <div class="row">
-                        <nav class="bg-f5f5f5">
+                        <nav class="bg-light">
                             <ol class="d-flex flex-wrap mb-1 mt-1 list-unstyled">
-                                <li class="breadcrumb-item ">
+                                <li class="breadcrumb-item small">
                                     <a href="adminpannel.php">Admin Pannel</a>
                                 </li>
 
-                                <li class="breadcrumb-item active">
+                                <li class="breadcrumb-item active small">
                                     <a class="text-decoration-none text-black-50" href="#">Manage Users</a>
                                 </li>
                             </ol>
@@ -119,7 +119,7 @@ if (isset($_SESSION["admin"])) {
 
                                         <tr>
                                             <th scope="row"><?php echo $p + 1; ?></th>
-                                            <td onclick="viewmassagemodel('<?php echo $us['email'] ?>');refresh2('<?php echo $us['email'] ?>');"><img src="<?php echo $us["image"] ?>" alt="propic" class="w-100 h-100 object-fit-cover" ></td>
+                                            <td onclick="viewmassagemodel('<?php echo $us['email'] ?>');refresh2('<?php echo $us['email'] ?>');" style="max-width: 50px;"><img src="<?php echo $us["image"] ?>" alt="propic" class="w-100 h-100 object-fit-cover" ></td>
                                             <td onclick="viewmassagemodel('<?php echo $us['email'] ?>');refresh2('<?php echo $us['email'] ?>');"><?php echo $us["email"] ?></td>
                                             <td><?php echo $us["first_name"] . " " . $us["last_name"] ?></td>
                                             <td><?php echo $us["mobile"] ?></td>

@@ -20,11 +20,11 @@ if (!isset($_SESSION["admin"])) {
 
     </head>
 
-    <body class="bgbg">
+    <body class="bgbg bg-f5f5f5">
         <?php
         require "loading.php";
         ?>
-        <div class="container-fluid justify-content-center" style="margin-top: 190px;">
+        <div class="container-fluid justify-content-center" style="margin-top: 100px;">
             <div class="row align-content-center">
                 <!-- <div class="col-12">
                     <div class="row">
@@ -35,23 +35,26 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div> -->
 
-                <div class="col-12 p-5">
+
+                <div class="col-12 col-lg-8 p-md-5">
                     <div class="row">
-                        <div class="col-6 d-none d-lg-block background1"></div>
-                        <div class="col-12 col-lg-6 d-block">
-                            <div class="row g-3">
-                                <div class="col-12 text-white">
-                                    <p>Sign In To Your Account</p>
+                        <div class="col-12 col-lg-6 d-block bg-white shadow rounded rounded-lg">
+                            <div class="row p-5">
+                                <div class="logologo mb-4">
+                                    <img src="images/logo 2-01.png" alt="logo" class="w-100 h-100 object-fit-contain">
+                                </div>
+                                <div class="col-12 text-white text-center">
+                                    <p class="fs-5 mb-0">Sign In To Your Account</p>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label text-white">Email</label>
+                                    <input id="e" type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <button onclick="adminverification();" class="btn btn-primary w-100 m-0">Send Verification code to your account</button>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label text-white">Email</label>
-                                    <input id="e" type="email" class="form-control">
-                                </div>
-                                <div class="col-12 col-lg-6 d-grid">
-                                    <button onclick="adminverification();" class="btn btn-primary">Send Verification code to your account</button>
-                                </div>
-                                <div class="col-12 col-lg-6 d-grid">
-                                    <a href="index.php" class="btn btn-danger">Back to User's Log In</a>
+                                    <a href="index.php" class="btn btn-danger w-100 m-0">Back to User's Log In</a>
                                 </div>
                             </div>
                         </div>

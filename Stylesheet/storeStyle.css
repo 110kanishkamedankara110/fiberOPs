@@ -11,6 +11,9 @@
 * {
     font-family: "quick";
 } */
+.aspect-ratio-square{
+    aspect-ratio: 1/1 !important;
+}
 button{
     border: none;
 }
@@ -681,7 +684,6 @@ html {
     transform: translate(-50%, -50%) scale(1, 1);
     opacity: 1;
 }
-
 .page__item-active:after {
     transform: translate(-50%, -50%) scale(1, 1);
     opacity: 1;
@@ -703,7 +705,7 @@ html {
     left: auto;
     right: 5px;
 }
-
+  bnrc 
 .bbb:hover {
     background-color: #f57224;
     border: solid 0.1px white;

@@ -25,7 +25,7 @@ if (isset($_SESSION["admin"])) {
         <link rel="stylesheet" href="style.css" />
     </head>
 
-    <body onload="act();" class="bgbg bg-f5f5f5" style="margin: 0;">
+    <body onload="act();" class="bgbg bg-light" style="margin: 0;">
 
         <?php
         require "loading.php";
