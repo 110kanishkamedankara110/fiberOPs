@@ -28,11 +28,13 @@ if (isset($_SESSION["admin"])) {
         require "loading.php";
         ?>
         <div class="container-fluid p-0">
-            <div class="row">
+            <div class="row align-items-start">
                 <!--head-->
-
-                <div class="col-12 px-2" style="background-color: purple;">
-                    <div class="row">
+    	        <?php
+                    require('sidemenu.php');
+                ?>
+                <div class="col-12 col-md-9 px-" >
+                    <div class="row" style="background-color: purple;">
                         <div class="col-5">
                             <div class="row p-2 align-items-center">
                                 <?php
@@ -77,14 +79,11 @@ if (isset($_SESSION["admin"])) {
                             </li>
                         </ol>
                     </nav>
-
-                </div>
-
-                <!--head-->
+                        <!--head-->
                 <div class="col-12">
-                    <div class="row align-items-start justify-content-evenly">
+                    <div class="row align-items-start justify-content-between">
                         <!--sortings-->
-                        <div class="col-10  col-lg-2 mt-3  rounded bg-white border" style="border: solid purple">
+                        <div class="col-10 mx-auto  col-lg-3 mt-3  rounded bg-white border" style="border: solid purple">
                             <div class="row">
                                 <div class="col-10 mt-3 fs-5">
 
@@ -183,8 +182,8 @@ if (isset($_SESSION["admin"])) {
                         <!--sortings-->
 
                         <!--product-->
-                        <div class="col-10 col-lg-9 bg-light">
-                            <div class="row mt-3">
+                        <div class="col-10 col-lg-9 bg-light mx-auto">
+                            <div class="row mt-0">
 
                                     <div class="row align-items-center justify-content-start flex-wrap g-2" id="prodiv">
                                         <?php
@@ -280,15 +279,8 @@ if (isset($_SESSION["admin"])) {
                         <!--product-->
                     </div>
                 </div>
-
-
-
-
-
-
-
-                <!--pagination-->
-                <div class="col-12 mb-3">
+                  <!--pagination-->
+                  <div class="col-12 mb-3">
                     <div class="row">
 
                         <div class="pagination justify-content-center">
@@ -339,6 +331,18 @@ if (isset($_SESSION["admin"])) {
                     </div>
                 </div>
                 <!--pagination-->
+
+                </div>
+
+            
+
+
+
+
+
+
+
+              
                 <!--model-->
                 <div class="modal fade" id="deletemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
