@@ -8,7 +8,7 @@ $search = $_POST["search"];
 $select = $_POST["select"];
 
 $key = $search . "%";
-$limit = 6;
+$limit = 20;
 $ofs = ($page * $limit) - $limit;
 if ($select == "0") {
     $products = database::s("SELECT `product`.`id`,`category`.`name` 
@@ -21,7 +21,7 @@ if ($select == "0") {
     INNER JOIN `model` ON `product`.`model_id`=`model`.`id` 
 INNER JOIN `brand` ON `brand`.`id`=`product`.`brand_id`  
     INNER JOIN `color` ON `color`.`id`=`product`.`color_id` 
-    INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE product.`title` LIKE '" . $key . "' AND `status_id`!='2' LIMIT " . $limit . " OFFSET " . $ofs . " ;");
+    INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE product.`title` LIKE '" . $key . "' AND `status_id`!='2'  ;");
 
     $productsno = database::s("SELECT `product`.`id`,`category`.`name` 
 AS `catagory`,`brand`.`name` 
@@ -47,7 +47,7 @@ INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE produ
     INNER JOIN `model` ON `product`.`model_id`=`model`.`id` 
 INNER JOIN `brand` ON `brand`.`id`=`product`.`brand_id`  
     INNER JOIN `color` ON `color`.`id`=`product`.`color_id` 
-    INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE product.`title` LIKE '" . $key . "' AND `category_id`='" . $select . "'  AND `status_id`!='2' LIMIT " . $limit . " OFFSET " . $ofs . " ;");
+    INNER JOIN `condition` ON `condition`.`id`=`product`.`condition_id`  WHERE product.`title` LIKE '" . $key . "' AND `category_id`='" . $select . "'  AND `status_id`!='2' ;");
 
     $productsno = database::s("SELECT `product`.`id`,`product`.`category_id`,`category`.`name` 
 AS `catagory`,`brand`.`name` 
@@ -69,50 +69,47 @@ for ($i = 0; $i < $nr; $i++) {
     $pro = $products->fetch_assoc();
     $im = database::s("SELECT * FROM `images` WHERE `product_id`='" . $pro["id"] . "'; ");
     $imgpath = $im->fetch_assoc();
-    $nwl=0;
+    $nwl = 0;
     if (isset($_SESSION["user"])) {
         $wl = database::s("SELECT * FROM `watchlist`  WHERE `product_id`='" . $pro["id"] . "' AND `user_email`='" . $_SESSION["user"]["email"] . "' ;");
         $nwl = $wl->num_rows;
     }
 ?>
-    <div class="d-inline-block col-5 col-lg-2  card mt-1 mb-1 ms-1" style="width: 18rem;">
-        <img src="<?php echo $imgpath["code"]; ?>" class="card-img-top cardTopImg">
-        <div class="card-body">
-            <h5 class="card-title"><?php echo $pro["title"] ?></h5>
-            <span class="card-text text-primary">Rs. <?php echo $pro["price"] ?> </span><br />
-            <?php
-            if ($pro["qty"] > 0) {
-                $h = "heart" . $pro["id"]
+
+    <div onclick="window.location='singleproductview.php?id=<?php echo $pro['id']; ?>'" style="display: inline-block;" class="col-12 m-3 item-box p-0 border-none  card shadow shadow-sm rounded  mt-1 mb-1 ms-1">
+        <div class="item-img-container rounded overflow-hidden">
+            <img src="<?php echo $imgpath["code"]; ?>" class="w-100 h-100 object-fit-cover">
+        </div>
+
+        <div class="card-body px-2">
+            <?php 
+            $h = "heart" . $pro["id"];
+            if ($nwl == 1) {
             ?>
-                <span class="card-text text-warning">In Stock</span><br />
-                <input id="qty<?php echo $pro['id'] ?>" type="number" class="form-control mb-1" value="1" min="1" max="<?php echo $pro["qty"] ?>" />
-
-                <a href="singleproductview.php?id=<?php echo $pro["id"]; ?>" class="btn btn-success">Buy Now</a>
-                <a onclick="addtocart(<?php echo $pro['id'] ?>,<?php echo $pro['qty'] ?>);" class="btn btn-danger">Add To Cart</a>
-                <?php
-                if ($nwl == 1) {
-                ?>
-                    <a onclick="addwatchlist(<?php echo $pro['id'] ?>);" class="text-danger mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h; ?>" class="bi bi-heart-fill"></i></a>
-                <?php
-                } else {
-                ?>
-                    <a onclick="addwatchlist(<?php echo $pro['id'] ?>);" class="text-danger mt-1 fs-4" style="background-color: white;"><i id="<?php echo $h; ?>" class="bi bi-heart"></i></a>
-                <?php
-                }
-                ?>
-
-
+                <button onclick="addwatchlist(<?php echo $pro['id'] ?>);" class="text-danger mt-1 fs-4 fav-icon p-1 rounded-circle"><i id="<?php echo $h; ?>" class="far fa-heart h6 mb-0" aria-hidden="true"></i></button>
             <?php
             } else {
             ?>
-                <span class="card-text text-danger">Out Of Stock</span><br />
+                <button onclick="addwatchlist(<?php echo $pro['id'] ?>);" class="text-danger mt-1 fs-4 fav-icon p-1 rounded-circle"><i id="<?php echo $h; ?>" class="far fa-heart h6 mb-0 " aria-hidden="true"></i></button>
 
-                <button disabled class="btn btn-success">Buy Now</button>
-                <button disabled class="btn btn-danger">Add To Cart</button>
             <?php
             }
             ?>
+            <span class="card-text text-dark text-sm h-25" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><?php echo $pro["title"] ?></span><br />
+            <span class="card-text text-orange text-sm">Rs. <?php echo number_format($pro["price"]) ?> </span><br />
+            <?php
+            if ($pro["qty"] > 0) {
 
+            ?>
+                <button onclick="addtocart(<?php echo $pro['id'] ?>,<?php echo $pro['qty'] ?>);" class="btn-outlined">Add to Cart</button>
+            <?php
+            } else {
+            ?>
+                <button style="background-color: black;color: white;" class="btn-outlined"  disabled>Out Of Stock</button>
+
+            <?php
+            }
+            ?>
         </div>
     </div>
 
@@ -121,7 +118,7 @@ for ($i = 0; $i < $nr; $i++) {
 }
 
 ?>
-<div class="col-12 mb-3">
+<!-- <div class="col-12 mb-3">
     <div class="row">
 
         <div class="pagination justify-content-center">
@@ -170,4 +167,4 @@ for ($i = 0; $i < $nr; $i++) {
 
 
     </div>
-</div>
+</div> -->

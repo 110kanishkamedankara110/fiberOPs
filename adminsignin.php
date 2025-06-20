@@ -62,7 +62,7 @@ if (!isset($_SESSION["admin"])) {
                 </div>
 
                 <div class="col-12 d-none d-lg-block fixed-bottom">
-                    <p class="text-center">&copy; 2021 PiXMart.lk ALL Rights Reserved.</p>
+                    <p class="text-center">&copy; 2021 FiberopticksLK ALL Rights Reserved.</p>
                 </div>
 
             </div>

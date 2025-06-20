@@ -6,8 +6,8 @@
 
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
-@import url("stylesheet/storeStyle.css");
-@import url("stylesheet/newStyles.css");
+@import url("./Stylesheet/storeStyle.css");
+@import url("./Stylesheet/newStyles.css");
 @import url("./bootstrap.css");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
@@ -34,7 +34,16 @@ body {
     background-color: white;
     font-weight: 900;
 }
+.border-orange{
+    border: 1px solid #f57224;
+}
 
+.custom-hover:hover{
+    color: black !important;
+    transition: all;
+    transition-duration: 300ms;
+    cursor: pointer;
+}
 .main-background {
     /* background-image: url("recourses/6 Flat Background Design Landing Page PNG SVG and Adobe XD Cool.jpg"); */
     background-size: cover;
@@ -284,7 +293,7 @@ body {
 }
 
 .EmptyView {
-    height: 400px;
+    height: 300px;
     background-image: url("recourses/Heart.svg");
     background-repeat: no-repeat;
     background-size: contain;

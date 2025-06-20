@@ -4,8 +4,8 @@
 <head>
     <title>FIBEROPTICSLK | SignIn</title>
 
-    <link rel="icon" href="recourses/logo.svg" />
-    <link rel="stylesheet" href="./bootstrap.css" />
+<link rel="icon" href="images/icon.png">
+<link rel="stylesheet" href="./bootstrap.css" />
     <link rel="stylesheet" href="style.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

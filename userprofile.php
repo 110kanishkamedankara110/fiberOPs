@@ -32,7 +32,7 @@ if (isset($_SESSION["user"])) {
             <nav>
                 <ol class=" d-flex flex-wrap list-unstyled bg-white rounded">
                     <li class="breadcrumb-item ">
-                        <a href="home.php">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
 
                     <li class="breadcrumb-item active">

@@ -17,7 +17,7 @@ if (isset($_SESSION["user"])) {
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="./Stylesheet/newStyles.css">
         <link rel="stylesheet" href="bootstrap.css" />
-        <link rel="icon" href="recourses\logo.svg" />
+       <link rel="icon" href="images/icon.png">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,14 +32,15 @@ if (isset($_SESSION["user"])) {
         <?php
         require "loading.php";
         ?>
-        <div class="container-fluid w-100 px-2">
+        <div class="">
             <?php
-            require "header.php"
+            require "header.php";
+            require('TopNav.php');
             ?>
             <div class="col-12 p-0">
                 <nav aria-label="breadcrumb mb-0">
                     <ol class="breadcrumb bg-white">
-                        <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Cart</li>
                     </ol>
                 </nav>
@@ -50,7 +51,7 @@ if (isset($_SESSION["user"])) {
                         <div class="col-lg-6 col-12">
                             <label class="form-label fs-4 mb-0">Your cart <i class="bi bi-cart3 "></i> </label>
                         </div>
-                        <div class="col-lg-6 col-12">
+                        <!-- <div class="col-lg-6 col-12">
                             <div class="row justify-content-between justify-content-md-end flex-column flex-md-row gap-lg0 gap-2">
                                 <div class="col-12 col-lg-6 mb-0">
                                     <input type="text" class="form-control mb-0" id="search" placeholder="Search in Cart" />
@@ -59,7 +60,7 @@ if (isset($_SESSION["user"])) {
                                 <button class="w-lg-auto w-100 btn btn-outline-primary m-0" style="background-color: white;color:purple;border:solid purple 0.1px" onmouseover="this.style.color='white';this.style.backgroundColor='purple';this.style.border='solid white 0.1px'" onmouseout="this.style.color='purple';this.style.backgroundColor='white';this.style.border='solid purple 0.1px'" onclick="searchcart();">Search</button>
                                 </div>
                             </div> 
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="row">
@@ -76,7 +77,7 @@ if (isset($_SESSION["user"])) {
                                         <label class="form-label fs-1 fw-bolder">You Have no items in your basket.</label>
                                     </div>
                                     <div class="offset-0 offset-lg-4 col-12 col-lg-4 d-grid mb-4">
-                                        <a href="home.php" class="btn btn-primary" style="background-color: purple;border:white">Start Shopping</a>
+                                        <a href="index.php" class="btn btn-primary" style="background-color: purple;border:white">Start Shopping</a>
                                     </div>
                                 </div>
                             </div>
@@ -140,14 +141,14 @@ if (isset($_SESSION["user"])) {
                                                     &nbsp; <span class=" text-black-50 small">Condition : <?php echo $wlpro["condition"] ?></span>
                                                     <br />
                                                     <span class="text-black-50 small mb-0">Price :</span> &nbsp;
-                                                    &nbsp; <span class="fw-bold text-black small mb-0">Rs. <?php echo $wlpro["price"] ?></span>
+                                                    &nbsp; <span class="fw-bold text-black small mb-0">Rs. <?php echo number_format($wlpro["price"]) ?></span>
                                                     <br />
                                                     <span class=" text-black-50 small mb-0">Qty : </span>
                                                     <!-- <input disabled id="qty<?php echo $wlpro['id'] ?>" type="text" value="<?php echo $pro["qty"] ?>" class="rounded mt-3 border border-2 border-secondary fs-4 fw-bold px-3 cartqty" /> -->
                                                     <input id="qty<?php echo $pro['id'] ?>" type="number" onchange="updateCartVal('<?= $pro['id'] ?>')" class="small rounded border-none px-3 cartqty" value="<?= $pro["qty"] ?>" min="1" max="<?php echo $wlpro["qty"] ?>" />
                                                     <br />
                                                     <span class="small text-black-50 mb-0">Delivery Fee :</span> &nbsp;
-                                                    &nbsp; <span class="small text-black mb-0">Rs.<?php echo $shipping; ?></span>
+                                                    &nbsp; <span class="small text-black mb-0">Rs.<?php echo number_format($shipping); ?></span>
                                                     <br>
                                                     <span class="text-black-50 small">Seller : </span>
                                                 </div>
@@ -160,9 +161,9 @@ if (isset($_SESSION["user"])) {
                                                 <div class="row">
                                                     <div class="col-6 col-md-6">
                                                         <span class="fw-bold text-black-50 small">Requested total <i class="bi bi-exclamation-circle"></i></span>
-                                                    </div>
+                                                    </div> 
                                                     <div class="col-6 col-md-6 text-end">
-                                                        <span class=" fs-6">Rs. <?php echo ($wlpro["price"] * $pro["qty"]) + $shipping; ?> </span>
+                                                        <span class=" fs-6">Rs. <?php echo number_format(($wlpro["price"] * $pro["qty"]) + $shipping); ?> </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,7 +189,12 @@ if (isset($_SESSION["user"])) {
 
 
 
+<?php
+if($totprice>=5000){
+    $totship=0;
+}
 
+?>
 
 
                         <div class="col-12 col-lg-3 p-4 shadow shadow-sm" id="sum">
@@ -204,7 +210,7 @@ if (isset($_SESSION["user"])) {
                                                 <span class="fs-6 fw-bold"> Items (<?php echo $cpronr ?>) </span>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <span class="fs-6 fw-bold ">Rs. <?php echo $totprice ?> </span>
+                                                <span class="fs-6 fw-bold ">Rs. <?php echo number_format($totprice) ?> </span>
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +220,7 @@ if (isset($_SESSION["user"])) {
                                                 <span class="fs-6 fw-bold"> Shipping </span>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <span class="fs-6 fw-bold ">Rs.<?php echo $totship ?> </span>
+                                                <span class="fs-6 fw-bold ">Rs.<?php echo number_format($totship) ?> </span>
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +231,7 @@ if (isset($_SESSION["user"])) {
                                                 <span class="fs-5 fw-bold"> Total </span>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <span class="fs-5 fw-bold ">Rs.<?php echo $totprice + $totship ?> </span>
+                                                <span class="fs-5 fw-bold ">Rs.<?php echo number_format($totprice + $totship) ?> </span>
                                             </div>
                                         </div>
                                     </div>

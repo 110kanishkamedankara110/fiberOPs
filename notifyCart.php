@@ -16,7 +16,7 @@ if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
 <script src="script.js"></script>
 <script>
     
-    saveinvoicecart(<?=$order_idr?>);
+    // saveinvoicecart(<?=$order_idr?>);
    
 </script>
 <?php

@@ -353,7 +353,7 @@ if (isset($_SESSION["admin"])) {
                         <a href="updateproduct.php" class="btn btn-dark searchbutton">Update Product</a>
                     </div> -->
                     <div class="offset-0 offset-lg-4 col-12 col-lg-4 d-grid mb-3">
-                        <button class="btn btn-success searchbutton" onclick="addproduct();">Add Product</button>
+                        <button class="btn btn-success searchbutton" id="adPro" onclick="addproduct();">Add Product</button>
                     </div>
 
                     <!--save button-->

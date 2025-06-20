@@ -115,7 +115,7 @@ if (isset($_SESSION["admin"])) {
                                             <hr>
                                             <br />
 
-                                            <span class="fs-6 ">Rs. <?php echo $a ?> .00</span>
+                                            <span class="fs-6 ">Rs. <?php echo number_format($a) ?> .00</span>
                                         </div>
 
                                     </div>
@@ -131,7 +131,7 @@ if (isset($_SESSION["admin"])) {
                                             <span class="fs-5 fw-bold">Monthly Earnings</span>
                                             <hr>
                                             <br />
-                                            <span class="fs-6 ">Rs. <?php echo $month; ?> .00</span>
+                                            <span class="fs-6 ">Rs. <?php echo number_format($month); ?> .00</span>
                                         </div>
 
                                     </div>
@@ -247,7 +247,7 @@ if (isset($_SESSION["admin"])) {
                                         <br>
                                         <span class="fs-6"><?php echo $frow["value"] ?> Items</span>
                                         <br>
-                                        <span class="fs-6">Rs. <?php echo $prorow["price"] ?> .00</span>
+                                        <span class="fs-6">Rs. <?php echo number_format($prorow["price"]) ?></span>
                                     </div>
                                     <div class="col-12">
                                         <div class="fristplace"></div>

@@ -31,6 +31,11 @@ $currency="LKR";
             }
             $itum = $itum . $it["title"] . ",";
         }
+
+        if($totpri>=5000){
+            $totship=0;
+        }
+
         $lasttotpri = $totship + $totpri;
         $cityname = database::s("SELECT * FROM `location` 
         INNER JOIN `city` ON `location`.`city_id`=`city`.`id` WHERE `location`.`id`='" . $city["location_id"] . "';");

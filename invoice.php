@@ -27,7 +27,7 @@ if (isset($_SESSION["user"])) {
             <title>FIBEROPTICSLK | Invoice</title>
             <link rel="stylesheet" href="style.css" />
             <link rel="stylesheet" href="bootstrap.css" />
-            <link rel="icon" href="recourses\logo.svg" />
+           <link rel="icon" href="images/icon.png">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -131,7 +131,7 @@ if (isset($_SESSION["user"])) {
                                                 <a href="#" class="fs-6 fw-bold p-2"><?php echo $det["order_id"] ?></a><br />
                                                 <a href="#" class="fs-6 fw-bold p-2"><?php echo $product["title"] ?></a>
                                             </td>
-                                            <td class="fs-6 text-end pt-3" style="background-color: rgb(199,199,199);">Rs.<?php echo $product["price"] ?></td>
+                                            <td class="fs-6 text-end pt-3" style="background-color: rgb(199,199,199);">Rs.<?php echo number_format($product["price"]) ?></td>
                                             <td class="fs-6 text-end pt-3"><?php echo $det["qty"] ?></td>
                                             <td class="fs-6 text-end pt-3 bg-primary text-white"><?php echo $det["total"] ?></td>
                                         </tr>
@@ -160,7 +160,7 @@ if (isset($_SESSION["user"])) {
                                     <tr>
                                         <td colspan="2" class="border-0"></td>
                                         <td colspan="2" class="fs-4 text-end border-0 text-primary">Grandtotal</td>
-                                        <td class="fs-5 text-end border-0 text-primary">Rs. <?php echo $subtot - $dis ?></td>
+                                        <td class="fs-5 text-end border-0 text-primary">Rs. <?php echo number_format($subtot - $dis) ?></td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -252,9 +252,9 @@ if (isset($_SESSION["user"])) {
         </html>
 <?php
     } else {
-        header("location:home.php");
+        header("location:index.php");
     }
 } else {
-    header("location:home.php");
+    header("location:index.php");
 }
 ?>

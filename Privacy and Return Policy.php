@@ -145,7 +145,7 @@
             <h2>Contact Us</h2>
             <p>If you have any questions about our Returns and Refunds Policy, please contact us:</p>
             <ul>
-                <li>By visiting this page on our website: <a href="https://fiberopticslk.com/#contact">https://fiberopticslk.com/#contact</a></li>
+                <li>By visiting this page on our website: <a href="https://fiberopticslk.com/#contact">HelpAndcCntact.php</a></li>
                 <li>By phone number: <a href="dial:+94773406692">(+94) 773406692</a></li>
                 <li>By emailing us : <a href="mailto:info@fiberopticslk.com">info@fiberopticslk.com</a></li>
 

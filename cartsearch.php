@@ -52,7 +52,7 @@ if ($cpronr == 0) {
                 <label class="form-label fs-1 fw-bolder">You Have no items in your basket.</label>
             </div>
             <div class="offset-0 offset-lg-4 col-12 col-lg-4 d-grid mb-4">
-                <a href="home.php" class="btn btn-primary">Start Shopping</a>
+                <a href="index.php" class="btn btn-primary">Start Shopping</a>
             </div>
         </div>
     </div>
@@ -122,13 +122,13 @@ if ($cpronr == 0) {
                                 &nbsp; <span class="fw-bold text-black-50 " style="font-size: 12px;">Condition : <?php echo $wlpro["condition"] ?></span>
                                 <br />
                                 <span class="fw-bold text-black-50 fs-5">Price :</span> &nbsp;
-                                &nbsp; <span class="fw-bold text-black">Rs. <?php echo $wlpro["price"] ?></span>
+                                &nbsp; <span class="fw-bold text-black">Rs. <?php echo number_format($wlpro["price"]) ?></span>
                                 <br />
                                 <span class="fw-bold text-black-50 fs-5">Quentity : </span>
                                 <input disabled id="qty<?php echo $wlpro['id'] ?>" type="text" value="<?php echo $pro["cqty"] ?>" class="rounded mt-3 border border-2 border-secondary fs-4 fw-bold px-3 cartqty" />
                                 <br />
                                 <span class="fw-bold text-black-50 fs-5">Delivery Fee :</span> &nbsp;
-                                &nbsp; <span class="fw-bold text-black">Rs.<?php echo $shipping; ?></span>
+                                &nbsp; <span class="fw-bold text-black">Rs.<?php echo number_format($shipping); ?></span>
                             </div>
                         </div>
                         <div class="col-md-3 mt-4">
@@ -148,7 +148,7 @@ if ($cpronr == 0) {
 
                                 </div>
                                 <div class="col-6 col-md-6 text-end">
-                                    <span class=" fs-5">Rs. <?php echo ($wlpro["price"] * $pro["cqty"]) + $shipping; ?> </span>
+                                    <span class=" fs-5">Rs. <?php echo number_format(($wlpro["price"] * $pro["cqty"]) + $shipping); ?> </span>
                                 </div>
                             </div>
                         </div>

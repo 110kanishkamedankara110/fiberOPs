@@ -16,8 +16,9 @@ if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
 ?>
 <script src="script.js"></script>
 <script>
-    saveinvoice(orderid, proid, qty, email, amount);
-    // alert("<?=$array?>");
+    //     alert("<?=$array?>");
+
+    // saveinvoice(<?=$order_id?>, <?=$array["proid"]?>, <?=$array["qty"]?>,<?=$array["email"]?>, <?=$payhere_amount?>);
 </script>
 <?php
 

@@ -4,7 +4,7 @@ require "database.php";
 // $cat=$_POST["cat"];
 $page = $_POST["page"];
 
-$limit = 6;
+$limit = 20;
 $ofs = ($page * $limit) - $limit;
 
 $products = database::s("SELECT `product`.`id`,`category_id`,`category`.`name` 
